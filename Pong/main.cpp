@@ -9,39 +9,29 @@
 #include "Paddle.h"
 #include "Window.h"
 
-int ticks{};
-
 WindowGeom wg;
-Settings settings;
-// main window
-Player player{ wg };
-Opponent opponent{ wg };
-Ball ball{ wg, 8 };
+Player player{wg};
+Opponent opponent{wg};
+Ball ball{wg, 8};
 
-Window window{ wg, &player, &opponent, &ball, "Pong - JW" };
+Window window{wg, &player, &opponent, &ball, "Pong - JW"};
 
 // instance of gameobjects structure
-GameObjects gameObjects{ wg };
-
-
+GameObjects gameObjects{wg};
 
 // bit of a stub for now, but useful to extract this into a function for future
-inline int init()
-{
-	if (!window.load()) {
-		return -1;
-	}
-	return 0;
+inline int init() {
+  if (!window.load()) {
+    return -1;
+  }
+  return 0;
 }
 
+int main(int argc, char* args[]) {
+  if (init() >= 0) {
+    window.loop();
+  }
 
-
-int main(int argc, char* args[])
-{
-	if (init() >= 0) {
-		window.loop();
-	}
-
-	window.close();  // destroy stuff
-	return 0;
+  window.close();  // destroy stuff
+  return 0;
 }
