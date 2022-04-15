@@ -28,7 +28,6 @@ int main(int argc, char* args[]) {
   if (init() >= 0) {
     window.loop();
   }
-
   window.close();  // destroy stuff
   return 0;
 }

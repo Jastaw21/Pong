@@ -8,7 +8,7 @@
 #include "Location.h"
 #include "Paddle.h"
 #include "Events.h"
-#include "\Users\jacks\source\repos\UtilityFunctions\UtilityFunctions\Clamp.h"
+#include "Clamp.h"
 
 class Ball : public SDL_Rect {
  public:

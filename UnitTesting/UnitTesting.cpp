@@ -2,7 +2,7 @@
 #include "Ball.h"
 #include "CppUnitTest.h"
 #include "Geometry.h"
-#include "Location.cpp"
+#include "Location.h"
 #include "Paddle.h"
 #include "Specialisations.h"
 
@@ -59,7 +59,6 @@ TEST_CLASS(BallClassTests) {
     Assert::AreEqual(static_cast<pix>(150), ball.xPos());
     Assert::AreEqual(static_cast<pix>(153), ball.yPos());
   }
-
 };
 TEST_CLASS(PaddleClassTests) {
   WindowGeom wg{500, 500};
