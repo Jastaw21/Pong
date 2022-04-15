@@ -1,9 +1,6 @@
 // pong recreation Jack W Mar 2022
 
 #include <SDL.h>
-#include <stdio.h>
-
-#include <iostream>
 
 #include "Geometry.h"
 #include "Paddle.h"
