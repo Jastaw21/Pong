@@ -14,39 +14,34 @@ class Paddle {
         yMax(wg.HEIGHT),
         xMax(wg.HEIGHT) {}
 
-  // position setters
-  void move(XY newpos);
+  SDL_Rect rectangle_m;  // rect for SDL to use needs to be public.
+                         // Actually could just inherit this
+
+  //setters
+  void move(XY newpos); // just testing at the min
   void move(int X, int newY);
   void up(int inc);
   void down(int inc);
+  void lengthSet(int length); // testing function
+  void colour(int rP, int gP, int bP); // don't know if I'll use this
 
-  // set size (testing only)
-  void lengthSet(int length);
-
-  // colour getters
+  // getters
   int r();
   int g();
   int b();
-
-  // position getters
   int x();
   int y();
   virtual int maxX();
   virtual int maxY();
   int top();
   int bottom();
-
-  // size getters
   int length();
   int width();
 
-  // colour setters
-  void colour(int rP, int gP, int bP);
 
   bool hit(int xball, int yball);
 
-  SDL_Rect rectangle_m;  // rect for SDL to use needs to be public.
-                         // Actually could just inherit this
+  
 
  protected:
   int length_m;  // size
