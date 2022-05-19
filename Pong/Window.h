@@ -13,7 +13,6 @@
 #include "Geometry.h"
 #include "Paddle.h"
 
-
 // to hold objects in a struct
 class GameObjects {
  public:
@@ -25,6 +24,8 @@ class GameObjects {
 };
 
 class Window {
+  // pass the game objects in as parameters to intialise the window object with
+  // pointers to each of them. Default title
  public:
   Window(WindowGeom wg, Player* playerP, Opponent* opponentP, Ball* ballP,
          std::string title = "Main")
@@ -34,9 +35,7 @@ class Window {
         width_m(wg.WIDTH),
         player(playerP),
         opponent(opponentP),
-        ball(ballP) {
-  
-  }
+        ball(ballP) {}
 
   ~Window() {
     close();
@@ -47,11 +46,11 @@ class Window {
   }
 
   // getters
-  pix height();
-  pix width();
-  double ratio();
-  SDL_Window* window();
-  SDL_Renderer* render();
+  pix height() { return height_m; };
+  pix width() { return width_m; };
+
+  SDL_Window* window() { return window_m; };
+  SDL_Renderer* render() { return renderer_m; };
 
   // setters
   void heightset(pix heightP);
@@ -61,12 +60,10 @@ class Window {
   bool load();
   void close();
   void draw();
-
-  // loops
   void tick();
   void loop();
 
-  // handlers
+  // event handlers
   void keypressHandle(SDL_Keycode key);
 
   // game objects

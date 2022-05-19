@@ -1,12 +1,5 @@
 #include "Window.h"
 
-// getters
-pix Window::height() { return height_m; }
-pix Window::width() { return width_m; }
-double Window::ratio() { return (width_m / height_m); }
-SDL_Window* Window::window() { return window_m; }
-SDL_Renderer* Window::render() { return renderer_m; }
-
 // setters
 void Window::heightset(pix heightP) { height_m = heightP; }
 void Window::widthset(pix widthP) { width_m = widthP; }
