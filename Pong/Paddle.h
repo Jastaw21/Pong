@@ -1,8 +1,10 @@
-#pragma once
+#ifndef PADDLE_H
+#define PADDLE_H
 #include <SDL.h>
 
 #include "Geometry.h"
 #include "Location.h"
+#include <vector>
 
 class Paddle {
  public:
@@ -17,13 +19,13 @@ class Paddle {
   SDL_Rect rectangle_m;  // rect for SDL to use needs to be public.
                          // Actually could just inherit this
 
-  //setters
-  void move(XY newpos); // just testing at the min
+  // setters
+  void move(XY newpos);  // just testing at the min
   void move(int X, int newY);
   void up(int inc);
   void down(int inc);
-  void lengthSet(int length); // testing function
-  void colour(int rP, int gP, int bP); // don't know if I'll use this
+  void lengthSet(int length);           // testing function
+  void colour(int rP, int gP, int bP);  // don't know if I'll use this
 
   // getters
   int r();
@@ -38,10 +40,9 @@ class Paddle {
   int length();
   int width();
 
-
+  // game functions
   bool hit(int xball, int yball);
-
-  
+  void score();
 
  protected:
   int length_m;  // size
@@ -54,7 +55,8 @@ class Paddle {
   int yMax;
 
  protected:
-  int8_t score{0};
+  int8_t score_m{0};
+  std::vector<SDL_Rect> scoreboxes{};
 };
 
 // basically just aliases at this point
@@ -72,3 +74,4 @@ class Opponent : public Paddle {
   virtual int maxY();
 };
 
+#endif

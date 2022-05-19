@@ -69,3 +69,5 @@ int Player::maxX() { return xMax; }
 int Player::maxY() { return (yMax - length_m); }
 int Opponent::maxX() { return xMax - width_m; }
 int Opponent::maxY() { return (yMax - length_m); }
+
+void Paddle::score() { score_m += 1; }

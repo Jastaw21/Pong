@@ -28,7 +28,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
-    <ClCompile Include="Events.cpp" />
     <ClCompile Include="Location.cpp" />
     <ClCompile Include="Location.h" />
     <ClCompile Include="main.cpp" />
@@ -37,10 +36,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
-    <ClInclude Include="Events.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="Paddle.h" />
+    <ClInclude Include="ScoreBox.h" />
     <ClInclude Include="Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Downloads\SDL2_ttf-2.0.18\SDL2_ttf-2.0.18\VisualC\SDL_ttf.vcxproj">
+      <Project>{dddbd07d-dc76-4af6-8d02-3e2deb6ee255}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

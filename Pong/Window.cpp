@@ -91,23 +91,25 @@ void Window::draw() {
   SDL_RenderPresent(renderer_m);
 }
 void Window::tick() { ticks_m = SDL_GetTicks(); }
+
 void Window::loop() {
   SDL_Event eventM;
-
   while (run_M) {
     // while running - update ticks every loop
     tick();
 
     while (SDL_PollEvent(&eventM) != 0) {
       if (eventM.type == SDL_QUIT) {
+        // catch a quit and set the run flag to false to end at the next loop
         run_M = false;
       } else if (eventM.type = SDL_KEYDOWN) {
         keypressHandle(eventM.key.keysym.sym);
       }
     }
-    ball->move(ticks_m, player->x(), opponent->x(), player->length());    
+    ball->move(ticks_m, player->x(), opponent->x(), player->length());
     draw();
   }
+  close();
 }
 
 // handlers
@@ -133,7 +135,6 @@ void Window::keypressHandle(SDL_Keycode key) {
       player->down(10);
       break;
     }
-
     default:
       break;
   }

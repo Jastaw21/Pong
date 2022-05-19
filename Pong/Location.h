@@ -1,5 +1,7 @@
-#pragma once
+// simple class to hold two points
 
+#ifndef LOCATION_H
+#define LOCATION_H
 class XY {
  public:
   XY(int x, int y) : x_mem(x), y_mem(y) {}
@@ -26,3 +28,4 @@ class XY {
   int x_mem{0};
   int y_mem{0};
 };
+#endif  // !1

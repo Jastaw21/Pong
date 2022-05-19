@@ -105,7 +105,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\jacks\source\repos\ExternLibs\SDL\SDL2-2.0.20\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\jacks\source\repos\UtilityFunctions\UtilityFunctions;C:\Users\jacks\source\repos\ExternLibs\SDL\SDL2-2.0.20\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\jacks\source\repos\Pong\UnitTesting;C:\Users\jacks\source\repos\ExternLibs\SDL\SDL2-2.0.20\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MyRelease|x64'">

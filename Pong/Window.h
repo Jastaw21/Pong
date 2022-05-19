@@ -1,5 +1,8 @@
 // Main Window Implementation
-#pragma once
+
+#ifndef WINDOW_H
+#define WINDOW_H
+
 #include <SDL.h>
 #include <stdio.h>
 
@@ -9,7 +12,7 @@
 #include "Ball.h"
 #include "Geometry.h"
 #include "Paddle.h"
-#include "Events.h"
+
 
 // to hold objects in a struct
 class GameObjects {
@@ -82,3 +85,4 @@ class Window {
   SDL_Surface* surf_m = NULL;
   std::string title_m;
 };
+#endif

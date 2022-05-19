@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GEOMETRY_H
+#define GEOMETRY_H
 
 using ms = uint16_t;
 using pix = int16_t;
@@ -26,3 +27,5 @@ enum class Bounds {
   PLAYER,
   OPPONENT
 };
+
+#endif

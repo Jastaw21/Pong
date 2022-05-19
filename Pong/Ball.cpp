@@ -17,7 +17,7 @@ void Ball::move(int tick, int playerY, int opponentY, int size) {
   if (!stepsinit) [[unlikely]] {
     initialiseSteps();
   }
-  if (tick - lastmovetick > Settings::MoveInterval)[[likely]] {
+  if (tick - lastmovetick > Settings::MoveInterval) [[likely]] {
     x += xstep;
     y += ystep;
     hitHandler(hitDetector(playerY, opponentY, size));
@@ -41,14 +41,11 @@ pix Ball::size_get() { return w; }
 pix Ball::maxX() { return maxX_M; }
 pix Ball::maxY() { return maxY_M; }
 
-
-Bounds Ball::hitDetector(int playerY, int opponentY,
-                         int size)  // hit detector - just for walls atm.
-{
+Bounds Ball::hitDetector(int playerY, int opponentY, int size) {
   bool xhit = (x <= 0 || x >= maxX_M) ? true : false;
   bool yhit = (y <= 0 || y >= maxY_M) ? true : false;
 
-  if (xhit || yhit)[[unlikely]]  // if we hit either
+  if (xhit || yhit) [[unlikely]]  // if we hit either
   {
     // if x and not y - find out if it's left or right
     if (xhit && !yhit) {
@@ -89,6 +86,7 @@ void Ball::hitHandler(Bounds hitarea) {
       break;
     case Bounds::LEFT:
       xstep *= -1;
+      
       printf("Player Conceded\n");
       break;
     case Bounds::BOTTOM:

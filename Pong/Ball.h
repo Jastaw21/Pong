@@ -1,4 +1,5 @@
-#pragma once
+#ifndef BALL_H
+#define BALL_H
 
 #include <SDL.h>
 
@@ -7,7 +8,6 @@
 #include "Geometry.h"
 #include "Location.h"
 #include "Paddle.h"
-#include "Events.h"
 #include "Clamp.h"
 
 class Ball : public SDL_Rect {
@@ -61,3 +61,5 @@ class Ball : public SDL_Rect {
 
 bool playerHit(int xpos, int ypos, int playerY, int playerSize);
 bool opponnentHit(int xpos, int ypos, int opponnentY, int opponnentSize);
+
+#endif

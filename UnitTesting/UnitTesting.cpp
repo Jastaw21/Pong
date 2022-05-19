@@ -1,9 +1,11 @@
 
 #include "Ball.h"
+#include "Clamp.h"
 #include "CppUnitTest.h"
 #include "Geometry.h"
 #include "Location.h"
 #include "Paddle.h"
+#include "ScoreBox.h"
 #include "Specialisations.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -101,5 +103,13 @@ TEST_CLASS(PaddleClassTests) {
 
   TEST_METHOD(enumtest) { Assert::AreEqual(1, static_cast<int>(Bounds::LEFT)); }
 };
+TEST_CLASS(ScoreBoxTests) {
+  ScoreBox sb{1, 2, 3, 4};
 
+  TEST_METHOD(testinit) { Assert::AreEqual(1, sb.x);
+    Assert::AreEqual(2, sb.y);
+    Assert::AreEqual(3, sb.w);
+    Assert::AreEqual(4, sb.h);
+  }
+};
 }  // namespace UnitTesting
