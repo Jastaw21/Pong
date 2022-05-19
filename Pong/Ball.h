@@ -21,7 +21,7 @@ class Ball : public SDL_Rect {
 
   // set
   void move(pix xP, pix yP);  // move with individual params
-  void move(XY posP);         // pass a pos
+  void move(XY posP);         // pass a position
   void move(int tick, int playerY, int opponentY, int size);  // main overload
   void resize(pix radius);  // will always be square
   void retarget(int xP, int yP);
