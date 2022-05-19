@@ -48,19 +48,18 @@ class Window {
   // getters
   pix height() { return height_m; };
   pix width() { return width_m; };
-
   SDL_Window* window() { return window_m; };
   SDL_Renderer* render() { return renderer_m; };
 
   // setters
-  void heightset(pix heightP);
-  void widthset(pix widthP);
+  void heightset(pix heightP) { height_m = heightP; };
+  void widthset(pix widthP) { width_m = widthP; };
 
   // state managers
   bool load();
   void close();
   void draw();
-  void tick();
+  void tick() { ticks_m = SDL_GetTicks(); };
   void loop();
 
   // event handlers

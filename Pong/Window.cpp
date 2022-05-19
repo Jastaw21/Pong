@@ -1,8 +1,5 @@
 #include "Window.h"
 
-// setters
-void Window::heightset(pix heightP) { height_m = heightP; }
-void Window::widthset(pix widthP) { width_m = widthP; }
 
 // state managers
 bool Window::load() {
@@ -83,8 +80,6 @@ void Window::draw() {
   // draw all
   SDL_RenderPresent(renderer_m);
 }
-void Window::tick() { ticks_m = SDL_GetTicks(); }
-
 void Window::loop() {
   SDL_Event eventM;
   while (run_M) {
