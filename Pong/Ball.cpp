@@ -29,8 +29,8 @@ void Ball::resize(pix radius) {
   h = radius;
 }
 void Ball::retarget(int xP, int yP) {
-  target.x(clamp(0, maxX_M, xP));
-  target.y(clamp(0, maxY_M, yP));
+  target_M.x(clamp(0, maxX_m, xP));
+  target_M.y(clamp(0, maxY_m, yP));
 }
 
 // get
@@ -38,12 +38,12 @@ XY Ball::pos() { return XY(x, y); }
 pix Ball::xPos() { return x; }
 pix Ball::yPos() { return y; }
 pix Ball::size_get() { return w; }
-pix Ball::maxX() { return maxX_M; }
-pix Ball::maxY() { return maxY_M; }
+pix Ball::maxX() { return maxX_m; }
+pix Ball::maxY() { return maxY_m; }
 
 Bounds Ball::hitDetector(int playerY, int opponentY, int size) {
-  bool xhit = (x <= 0 || x >= maxX_M) ? true : false;
-  bool yhit = (y <= 0 || y >= maxY_M) ? true : false;
+  bool xhit = (x <= 0 || x >= maxX_m) ? true : false;
+  bool yhit = (y <= 0 || y >= maxY_m) ? true : false;
 
   if (xhit || yhit) [[unlikely]]  // if we hit either
   {
@@ -67,8 +67,8 @@ Bounds Ball::hitDetector(int playerY, int opponentY, int size) {
   return Bounds::NONE;
 }
 void Ball::initialiseSteps() {
-  int deltax = target.x() - x;
-  int deltay = target.y() - y;
+  int deltax = target_M.x() - x;
+  int deltay = target_M.y() - y;
   double xscale = fabs(deltax) / (fabs(deltax) + fabs(deltay));
   double yscale = 1.0 - xscale;
   double xmov =
