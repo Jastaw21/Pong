@@ -1,6 +1,5 @@
 #include "Window.h"
 
-
 // state managers
 bool Window::load() {
   // success flag
@@ -41,6 +40,11 @@ bool Window::load() {
     success = false;
     return success;
   }
+  // init SDL_ttf lib
+  if (!fontmgr_m.init()) {
+    success = false;
+    return success;
+  }
 
   return success;
 }
@@ -50,6 +54,7 @@ void Window::close() {
   window_m = nullptr;
   renderer_m = nullptr;
   SDL_Quit();
+
 }
 void Window::draw() {
   // clear screen with white

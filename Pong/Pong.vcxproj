@@ -28,6 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="Location.cpp" />
     <ClCompile Include="Location.h" />
     <ClCompile Include="main.cpp" />
@@ -36,15 +37,27 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="FontManager.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="Paddle.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
     <ClInclude Include="ScoreBox.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Downloads\SDL2_ttf-2.0.18\SDL2_ttf-2.0.18\VisualC\SDL_ttf.vcxproj">
+    <ProjectReference Include="..\..\ExternLibs\SDL2_ttf-2.0.18\SDL2_ttf-2.0.18\VisualC\SDL_ttf.vcxproj">
       <Project>{dddbd07d-dc76-4af6-8d02-3e2deb6ee255}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Fonts\bit5x3.ttf">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Pong.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -128,7 +141,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>C:\Users\jacks\source\repos\UtilityFunctions\UtilityFunctions;C:\Users\jacks\source\repos\ExternLibs\SDL\SDL2-2.0.20\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\jacks\source\repos\ExternLibs\SDL\SDL2-2.0.20\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\jacks\source\repos\Pong\Pong;C:\Users\jacks\source\repos\Pong\x64\Debug;C:\Users\jacks\source\repos\ExternLibs\SDL\SDL2-2.0.20\lib\x64;$(LibraryPath)</LibraryPath>
+    <ExternalIncludePath>C:\Users\jacks\source\repos\ExternLibs\SDL2_ttf-2.0.18\SDL2_ttf-2.0.18;$(ExternalIncludePath)</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MyRelease|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -190,7 +204,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\jacks\source\repos\Pong\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MyRelease|x64'">

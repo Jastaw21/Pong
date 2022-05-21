@@ -4,6 +4,7 @@
 #include <SDL.h>
 
 #include "Geometry.h"
+#include <SDL_ttf.h>
 
 struct GeomInfo {
   static const pix thickness{10};

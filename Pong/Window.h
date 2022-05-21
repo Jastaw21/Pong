@@ -10,6 +10,7 @@
 #include <string>
 
 #include "Ball.h"
+#include "FontManager.h"
 #include "Geometry.h"
 #include "Paddle.h"
 
@@ -80,5 +81,6 @@ class Window {
   SDL_Renderer* renderer_m = NULL;
   SDL_Surface* surf_m = NULL;
   std::string title_m;
+  FontManager fontmgr_m;
 };
 #endif

@@ -8,7 +8,7 @@
 #include "Clamp.h"
 #include "Geometry.h"
 #include "Location.h"
-#include "Paddle.h"
+
 
 class Ball : public SDL_Rect {
  public:
