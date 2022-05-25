@@ -53,13 +53,15 @@ void Window::close() {
   SDL_DestroyWindow(this->window_m);
   window_m = nullptr;
   renderer_m = nullptr;
+  fontmgr_m.close();
   SDL_Quit();
-
 }
 void Window::draw() {
   // clear screen with white
   SDL_SetRenderDrawColor(renderer_m, 0, 0, 0, 0);
   SDL_RenderClear(renderer_m);
+
+
 
   // draw the player
   SDL_SetRenderDrawColor(renderer_m, player->r(), player->g(), player->b(),

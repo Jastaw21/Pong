@@ -8,10 +8,21 @@
 class FontManager {
  public:
   FontManager() {}
+  ~FontManager() { close(); }
 
   bool init();
+  bool loadfont();
+  SDL_Surface* surfaceGen();
+  void close();
+  void draw(SDL_Renderer* rendererP, SDL_Rect& drawrect, const char* score);
+ 
+  TTF_Font* font_ptr = nullptr;
+  SDL_Surface* fontSurf = nullptr;
+  SDL_Texture* texture = nullptr;
 
  private:
+  SDL_Color font_colour{255, 255, 255};
+  int font_size{128};
 };
 
 #endif  // !FONT_MANAGER_H
