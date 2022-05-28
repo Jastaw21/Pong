@@ -24,9 +24,6 @@ class Paddle {
   void down(int inc);
 
   // getters
-  int r();
-  int g();
-  int b();
   int x();
   int y();
   virtual int maxX();

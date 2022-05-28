@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 
+#include "Settings.h"
 #include "FontManager.h"
 #include "GameObjects.h"
 

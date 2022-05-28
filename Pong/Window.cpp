@@ -12,10 +12,8 @@ bool Window::load() {
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
     printf("SDL Video not initialised! SDL_Error: %s\n", SDL_GetError());
     success = false;
-    return success;  // changed these to be an early out - will avoid the else
-                     // chains
+    return success;
   }
-
   // set quality
   if (!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1")) {
     printf("Linear textuure not working\n");
@@ -45,9 +43,9 @@ bool Window::load() {
     success = false;
     return success;
   }
-
   return success;
 }
+
 void Window::close() {
   SDL_DestroyRenderer(this->renderer_m);
   SDL_DestroyWindow(this->window_m);
@@ -63,16 +61,12 @@ void Window::draw() {
 
   fontmgr_m.draw(renderer_m, player->draw_rect, drawtext1);
   fontmgr_m.draw(renderer_m, opponent->draw_rect, drawtext2);
-
   player->paddleDraw(renderer_m);
-  // draw the oppponent
-  SDL_SetRenderDrawColor(renderer_m, opponent->r(), opponent->g(),
-                         opponent->b(), 255);
-  SDL_RenderFillRect(renderer_m, &opponent->rectangle_m);
+  opponent->paddleDraw(renderer_m);
   // draw the vertical line
   SDL_SetRenderDrawColor(renderer_m, 255, 255, 255, 200);
   for (int i{5}; i < height_m; i += 10) {
-    SDL_Rect dot = {318, i, 4, 4};
+    SDL_Rect dot = {static_cast<int>(width_m / 2), i, 4, 4};
     SDL_RenderFillRect(renderer_m, &dot);
   }
   // draw the ball
@@ -100,8 +94,6 @@ void Window::loop() {
   }
   close();
 }
-
-// handlers
 void Window::keypressHandle(SDL_Keycode key) {
   switch (key) {
     case SDLK_ESCAPE: {

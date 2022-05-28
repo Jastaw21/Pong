@@ -1,23 +1,20 @@
 #include "Ball.h"
 
 // set
-void Ball::move(pix xP, pix yP) {
-  x = xP;
-  y = yP;
-}
-void Ball::move(XY posP) {
-  x = posP.x();
-  y = posP.y();
-}
+
 void Ball::move(int tick, int playerY, int opponentY, int size) {
-  if (tick < 1000) [[unlikely]] {
+  // give one second delay
+  if (tick < 1000) {
     return;
   }
-  // see if we've set the init for movements
-  if (!stepsinit) [[unlikely]] {
+
+  // see if we've set the movements by step in each direction
+  if (!stepsinit) {
     initialiseSteps();
   }
-  if (tick - lastmovetick > Settings::MoveInterval) [[likely]] {
+  if (tick - lastmovetick >
+      Settings::MoveInterval)  // if enough ticks have passed
+  {
     x += xstep;
     y += ystep;
     hitHandler(hitDetector(playerY, opponentY, size));
@@ -86,7 +83,7 @@ void Ball::hitHandler(Bounds hitarea) {
       break;
     case Bounds::LEFT:
       xstep *= -1;
-      
+
       printf("Player Conceded\n");
       break;
     case Bounds::BOTTOM:

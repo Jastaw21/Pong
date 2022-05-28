@@ -43,7 +43,7 @@
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="resource1.h" />
-    <ClInclude Include="ScoreBox.h" />
+    <ClInclude Include="Settings.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

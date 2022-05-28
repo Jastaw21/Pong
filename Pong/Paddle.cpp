@@ -23,10 +23,6 @@ void Paddle::down(int inc) {
   }
 }
 
-// colour getters
-int Paddle::r() { return r_m; }
-int Paddle::g() { return g_m; }
-int Paddle::b() { return b_m; }
 
 // position getters
 int Paddle::x() { return rectangle_m.x; }

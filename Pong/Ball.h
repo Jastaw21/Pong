@@ -8,7 +8,7 @@
 #include "Clamp.h"
 #include "Geometry.h"
 #include "Location.h"
-
+#include "Settings.h"
 
 class Ball : public SDL_Rect {
  public:
@@ -19,9 +19,7 @@ class Ball : public SDL_Rect {
         size_m{size},
         target_M{0, 120} {}
 
-  // set
-  void move(pix xP, pix yP);  // move with individual params
-  void move(XY posP);         // pass a position resolved
+
   void move(int tick, int playerY, int opponentY, int size);  // main overload
   void resize(pix radius);  // will always be square
   void retarget(int xP, int yP);
@@ -34,22 +32,19 @@ class Ball : public SDL_Rect {
   pix maxX();
   pix maxY();
 
-  Bounds hitDetector(int playerY, int opponentY,
-                     int size);  // hit detector function only
+  Bounds hitDetector(int playerY, int opponentY, int size);
 
  private:
-  // properties (dimensions/colour)
   const int r_m{255};
   const int g_m{255};
   const int b_m{255};
   int size_m{};
   int maxY_m{};
   int maxX_m{};
-  // loop handlers
+
   unsigned long long lastmovetick{0};
   bool stepsinit{false};
 
-  // movement
   int xstep{0};
   int ystep{0};
   XY target_M;
@@ -57,8 +52,5 @@ class Ball : public SDL_Rect {
   void initialiseSteps();
   void hitHandler(Bounds hitarea);
 };
-
-bool playerHit(int xpos, int ypos, int playerY, int playerSize);
-bool opponnentHit(int xpos, int ypos, int opponnentY, int opponnentSize);
 
 #endif
