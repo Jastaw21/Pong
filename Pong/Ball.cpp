@@ -21,10 +21,7 @@ void Ball::move(int tick, int playerY, int opponentY, int size) {
     lastmovetick = tick;
   }
 }
-void Ball::resize(pix radius) {
-  w = radius;
-  h = radius;
-}
+
 void Ball::retarget(int xP, int yP) {
   target_M.x(clamp(0, maxX_m, xP));
   target_M.y(clamp(0, maxY_m, yP));
@@ -114,7 +111,3 @@ void Ball::hitHandler(Bounds hitarea) {
   }
 }
 
-bool playerHit(int xpos, int ypos, int playerX, int playerY, int playerXSize,
-               int platerYSize) {
-  return false;
-}

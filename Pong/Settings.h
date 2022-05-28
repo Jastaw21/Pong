@@ -4,7 +4,7 @@
 #include "Geometry.h"
 
 struct Settings {
-  static const ms MoveInterval = 25;
+  static const ms MoveInterval = 15;
   static const ms InitalDelay = 1000;
   static const pix MoveStep = 6;
 };
