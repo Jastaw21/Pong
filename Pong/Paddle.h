@@ -39,6 +39,7 @@ class Paddle {
   // game functions
   bool hit(int xball, int yball);
   void score();
+  void paddleDraw(SDL_Renderer* renderer_P);
 
  protected:
   int length_m;  // size

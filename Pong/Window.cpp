@@ -64,10 +64,7 @@ void Window::draw() {
   fontmgr_m.draw(renderer_m, player->draw_rect, drawtext1);
   fontmgr_m.draw(renderer_m, opponent->draw_rect, drawtext2);
 
-  // draw the player
-  SDL_SetRenderDrawColor(renderer_m, player->r(), player->g(), player->b(),
-                         255);
-  SDL_RenderFillRect(renderer_m, &player->rectangle_m);
+  player->paddleDraw(renderer_m);
   // draw the oppponent
   SDL_SetRenderDrawColor(renderer_m, opponent->r(), opponent->g(),
                          opponent->b(), 255);

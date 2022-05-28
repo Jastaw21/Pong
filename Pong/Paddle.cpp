@@ -52,3 +52,8 @@ int Opponent::maxX() { return xMax - width_m; }
 int Opponent::maxY() { return (yMax - length_m); }
 
 void Paddle::score() { score_m += 1; }
+
+void Paddle::paddleDraw(SDL_Renderer* renderer_P) {
+  SDL_SetRenderDrawColor(renderer_P, r_m, g_m, b_m, 255);
+  SDL_RenderFillRect(renderer_P, &rectangle_m);
+}
