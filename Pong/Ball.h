@@ -20,15 +20,14 @@ class Ball : public SDL_Rect {
         target_M{0, 120} {}
 
 
-  void move(int tick, int playerY, int opponentY, int size);  // main overload
+  void move(int tick, int playerY, int opponentY, int size);
 
-  void retarget(int xP, int yP);
+
 
   // get
   XY pos();
   pix xPos();
   pix yPos();
-  pix size_get();
   pix maxX();
   pix maxY();
 

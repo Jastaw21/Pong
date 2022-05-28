@@ -22,43 +22,29 @@ void Ball::move(int tick, int playerY, int opponentY, int size) {
   }
 }
 
-void Ball::retarget(int xP, int yP) {
-  target_M.x(clamp(0, maxX_m, xP));
-  target_M.y(clamp(0, maxY_m, yP));
-}
-
 // get
 XY Ball::pos() { return XY(x, y); }
 pix Ball::xPos() { return x; }
 pix Ball::yPos() { return y; }
-pix Ball::size_get() { return w; }
 pix Ball::maxX() { return maxX_m; }
 pix Ball::maxY() { return maxY_m; }
 
 Bounds Ball::hitDetector(int playerY, int opponentY, int size) {
   bool xhit = (x <= 0 || x >= maxX_m) ? true : false;
   bool yhit = (y <= 0 || y >= maxY_m) ? true : false;
-
-  if (xhit || yhit) [[unlikely]]  // if we hit either
-  {
-    // if x and not y - find out if it's left or right
-    if (xhit && !yhit) {
-      return x <= 0 ? Bounds::LEFT : Bounds::RIGHT;
-    }
-    // if y and not x - is it top or bottom
-    else if (yhit && !xhit) {
-      return y <= 0 ? Bounds::TOP : Bounds::BOTTOM;
-    }
-    // if it's both corners at the same time
-    else {
-      if (y > 0) {
-        return x > 0 ? Bounds::BOTTOMRIGHT : Bounds::BOTTOMLEFT;
-      } else {
-        return x > 0 ? Bounds::TOPRIGHT : Bounds::TOPLEFT;
-      }
-    }
+  if (!xhit && !yhit) {
+    return Bounds::NONE;
   }
-  return Bounds::NONE;
+  if (xhit && !yhit) {
+    return x <= 0 ? Bounds::LEFT : Bounds::RIGHT;
+  }
+  if (yhit && !xhit) {
+    return y <= 0 ? Bounds::TOP : Bounds::BOTTOM;
+  }
+  if (y > 0) {
+    return x > 0 ? Bounds::BOTTOMRIGHT : Bounds::BOTTOMLEFT;
+  }
+  return x > 0 ? Bounds::TOPRIGHT : Bounds::TOPLEFT;
 }
 void Ball::initialiseSteps() {
   int deltax = target_M.x() - x;
@@ -110,4 +96,3 @@ void Ball::hitHandler(Bounds hitarea) {
       break;
   }
 }
-
