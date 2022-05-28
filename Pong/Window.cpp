@@ -70,11 +70,7 @@ void Window::draw() {
     SDL_Rect dot = {static_cast<int>(width_m / 2), i, 4, 4};
     SDL_RenderFillRect(renderer_m, &dot);
   }
-  // draw the ball
-  SDL_SetRenderDrawColor(renderer_m, 255, 255, 255, 255);
-  SDL_RenderFillRect(renderer_m, ball);
-  // draw all
-  SDL_RenderPresent(renderer_m);
+
 }
 void Window::loop() {
   SDL_Event eventM;
