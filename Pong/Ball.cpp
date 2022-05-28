@@ -96,3 +96,7 @@ void Ball::hitHandler(Bounds hitarea) {
       break;
   }
 }
+void Ball::ballDraw(SDL_Renderer* rendererP) {
+  SDL_SetRenderDrawColor(rendererP, r_m, g_m, b_m, 255);
+  SDL_RenderFillRect(rendererP, this);
+}

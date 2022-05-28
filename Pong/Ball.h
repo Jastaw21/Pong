@@ -19,19 +19,14 @@ class Ball : public SDL_Rect {
         size_m{size},
         target_M{0, 120} {}
 
-
   void move(int tick, int playerY, int opponentY, int size);
-
-
-
   // get
   XY pos();
   pix xPos();
   pix yPos();
   pix maxX();
   pix maxY();
-
-  Bounds hitDetector(int playerY, int opponentY, int size);
+  void ballDraw(SDL_Renderer* rendererP);
 
  private:
   const int r_m{255};
@@ -50,6 +45,7 @@ class Ball : public SDL_Rect {
 
   void initialiseSteps();
   void hitHandler(Bounds hitarea);
+  Bounds hitDetector(int playerY, int opponentY, int size);
 };
 
 #endif

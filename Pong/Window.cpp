@@ -63,6 +63,7 @@ void Window::draw() {
   fontmgr_m.draw(renderer_m, opponent->draw_rect, drawtext2);
   player->paddleDraw(renderer_m);
   opponent->paddleDraw(renderer_m);
+  ball->ballDraw(renderer_m);
   // draw the vertical line
   SDL_SetRenderDrawColor(renderer_m, 255, 255, 255, 200);
   for (int i{5}; i < height_m; i += 10) {
