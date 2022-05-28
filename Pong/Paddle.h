@@ -2,9 +2,10 @@
 #define PADDLE_H
 #include <SDL.h>
 
+#include <vector>
+
 #include "Geometry.h"
 #include "Location.h"
-#include <vector>
 
 class Paddle {
  public:
@@ -16,16 +17,11 @@ class Paddle {
         yMax(wg.HEIGHT),
         xMax(wg.HEIGHT) {}
 
-  SDL_Rect rectangle_m;  // rect for SDL to use needs to be public.
-                         // Actually could just inherit this
+  SDL_Rect rectangle_m;
 
   // setters
-  void move(XY newpos);  // just testing at the min
-  void move(int X, int newY);
   void up(int inc);
   void down(int inc);
-  void lengthSet(int length);           // testing function
-  void colour(int rP, int gP, int bP);  // don't know if I'll use this
 
   // getters
   int r();
@@ -47,16 +43,15 @@ class Paddle {
  protected:
   int length_m;  // size
   int width_m;
-  XY pos;        // position
-  int r_m{255};  // colour
-  int g_m{255};
-  int b_m{255};
+  XY pos;              // position
+  const int r_m{255};  // colour
+  const int g_m{255};
+  const int b_m{255};
   int xMax;
   int yMax;
 
  protected:
   int8_t score_m{0};
-  std::vector<SDL_Rect> scoreboxes{};
 };
 
 // basically just aliases at this point
@@ -66,12 +61,19 @@ class Player : public Paddle {
 
   virtual int maxX();
   virtual int maxY();
+
+  SDL_Rect draw_rect{25, 15, 100, 100};
 };
 class Opponent : public Paddle {
  public:
-  Opponent(WindowGeom wg) : Paddle{wg, wg.WIDTH - (10 + 5)} {}
+  Opponent(WindowGeom wg)
+      : Paddle{wg, wg.WIDTH - (10 + 5)}, draw_rect{wg.WIDTH-150, 16, 100, 100}
+
+  {}
   virtual int maxX();
   virtual int maxY();
+
+  SDL_Rect draw_rect{};
 };
 
 #endif

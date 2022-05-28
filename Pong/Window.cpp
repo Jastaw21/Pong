@@ -57,33 +57,30 @@ void Window::close() {
   SDL_Quit();
 }
 void Window::draw() {
-  // clear screen with white
-  SDL_SetRenderDrawColor(renderer_m, 0, 0, 0, 0);
+  // clear screen with black
+  SDL_SetRenderDrawColor(renderer_m, 55, 55, 55, 0);
   SDL_RenderClear(renderer_m);
 
-
+  fontmgr_m.draw(renderer_m, player->draw_rect, drawtext1);
+  fontmgr_m.draw(renderer_m, opponent->draw_rect, drawtext2);
 
   // draw the player
   SDL_SetRenderDrawColor(renderer_m, player->r(), player->g(), player->b(),
                          255);
   SDL_RenderFillRect(renderer_m, &player->rectangle_m);
-
   // draw the oppponent
   SDL_SetRenderDrawColor(renderer_m, opponent->r(), opponent->g(),
                          opponent->b(), 255);
   SDL_RenderFillRect(renderer_m, &opponent->rectangle_m);
-
   // draw the vertical line
   SDL_SetRenderDrawColor(renderer_m, 255, 255, 255, 200);
   for (int i{5}; i < height_m; i += 10) {
     SDL_Rect dot = {318, i, 4, 4};
     SDL_RenderFillRect(renderer_m, &dot);
   }
-
   // draw the ball
   SDL_SetRenderDrawColor(renderer_m, 255, 255, 255, 255);
   SDL_RenderFillRect(renderer_m, ball);
-
   // draw all
   SDL_RenderPresent(renderer_m);
 }

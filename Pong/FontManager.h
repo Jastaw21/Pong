@@ -21,8 +21,8 @@ class FontManager {
   SDL_Texture* texture = nullptr;
 
  private:
-  SDL_Color font_colour{255, 255, 255};
-  int font_size{128};
+  const SDL_Color font_colour{255, 255, 255};
+  const int font_size{128};
 };
 
 #endif  // !FONT_MANAGER_H

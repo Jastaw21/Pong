@@ -11,7 +11,7 @@ Player player{wg};
 Opponent opponent{wg};
 Ball ball{wg, 8};
 
-Window window{wg, &player, &opponent, &ball, "Pong - JW"};
+Window window{wg, &player, &opponent, &ball};
 
 // instance of gameobjects structure
 GameObjects gameObjects{wg};

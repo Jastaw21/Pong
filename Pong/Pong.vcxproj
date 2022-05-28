@@ -29,6 +29,7 @@
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="GameObjects.h" />
     <ClCompile Include="Location.cpp" />
     <ClCompile Include="Location.h" />
     <ClCompile Include="main.cpp" />

@@ -9,29 +9,13 @@
 #include <iostream>
 #include <string>
 
-#include "Ball.h"
 #include "FontManager.h"
-#include "Geometry.h"
-#include "Paddle.h"
-
-// to hold objects in a struct
-class GameObjects {
- public:
-  GameObjects(WindowGeom wg) : geom(wg), player{wg}, opponent{wg}, ball{wg} {}
-  WindowGeom geom;
-  Player player;
-  Opponent opponent;
-  Ball ball;
-};
+#include "GameObjects.h"
 
 class Window {
-  // pass the game objects in as parameters to intialise the window object with
-  // pointers to each of them. Default title
  public:
-  Window(WindowGeom wg, Player* playerP, Opponent* opponentP, Ball* ballP,
-         std::string title = "Main")
-      : title_m(title),
-        geom(wg),
+  Window(WindowGeom wg, Player* playerP, Opponent* opponentP, Ball* ballP)
+      : geom(wg),
         height_m(wg.HEIGHT),
         width_m(wg.WIDTH),
         player(playerP),
@@ -47,8 +31,7 @@ class Window {
   }
 
   // getters
-  pix height() { return height_m; };
-  pix width() { return width_m; };
+
   SDL_Window* window() { return window_m; };
   SDL_Renderer* render() { return renderer_m; };
 
@@ -80,7 +63,10 @@ class Window {
   SDL_Window* window_m = NULL;
   SDL_Renderer* renderer_m = NULL;
   SDL_Surface* surf_m = NULL;
-  std::string title_m;
+  std::string title_m = "PONG";
   FontManager fontmgr_m;
+  SDL_Rect drawrect{10, 10, 100, 100};
+  const char* drawtext1 = "1";
+  const char* drawtext2 = "2";
 };
 #endif

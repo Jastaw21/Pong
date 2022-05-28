@@ -1,14 +1,5 @@
 #include "Paddle.h"
 
-// position setters
-void Paddle::move(XY newpos) {
-  rectangle_m.x = newpos.x();
-  rectangle_m.y = newpos.y();
-}
-void Paddle::move(int xN, int yN) {
-  rectangle_m.x = xN;
-  rectangle_m.y = yN;
-}
 void Paddle::up(int inc) {
   auto newY = rectangle_m.y - inc;
 
@@ -32,9 +23,6 @@ void Paddle::down(int inc) {
   }
 }
 
-// set size
-void Paddle::lengthSet(int lengthP) { length_m = lengthP; }
-
 // colour getters
 int Paddle::r() { return r_m; }
 int Paddle::g() { return g_m; }
@@ -51,13 +39,6 @@ int Paddle::bottom() { return rectangle_m.y + length_m; }
 // size getters
 int Paddle::length() { return length_m; }
 int Paddle::width() { return width_m; }
-
-// colour setter
-void Paddle::colour(int rP, int gP, int bP) {
-  r_m = rP;
-  g_m = gP;
-  b_m = bP;
-}
 
 bool Paddle::hit(int xball, int yball) {
   return ((xball == pos.x()) && (yball <= (pos.y() + length_m)) &&
