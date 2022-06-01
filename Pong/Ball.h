@@ -23,11 +23,11 @@ class Ball : public SDL_Rect {
 
   void move(int tick, Paddle* player, Paddle* opponent);
   // get
-  XY pos();
-  pix xPos();
-  pix yPos();
-  pix maxX();
-  pix maxY();
+  XY pos() { return XY(x, y); }
+  pix xPos() { return x; }
+  pix yPos() { return y; }
+  pix maxX() { return maxX_m; }
+  pix maxY() { return maxY_m; }
   void ballDraw(SDL_Renderer* rendererP);
 
  private:

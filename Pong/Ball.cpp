@@ -23,12 +23,6 @@ void Ball::move(int tick, Paddle* player, Paddle* opponent) {
   }
 }
 
-// get
-XY Ball::pos() { return XY(x, y); }
-pix Ball::xPos() { return x; }
-pix Ball::yPos() { return y; }
-pix Ball::maxX() { return maxX_m; }
-pix Ball::maxY() { return maxY_m; }
 
 Bounds Ball::hitDetector(Paddle* player, Paddle* opponent) {
   paddleHit(player, opponent);
