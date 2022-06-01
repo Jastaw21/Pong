@@ -24,9 +24,6 @@
     <ClCompile Include="Paddle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Location.h">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="Location.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

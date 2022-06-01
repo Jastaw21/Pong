@@ -7,9 +7,10 @@
 
 #include "Clamp.h"
 #include "Geometry.h"
-#include "Location.h"
+#include "Vec2.h"
 #include "Paddle.h"
 #include "Settings.h"
+#include <Vec2.h>
 
 class Ball : public SDL_Rect {
  public:
@@ -21,7 +22,7 @@ class Ball : public SDL_Rect {
         target_M{0, 120} {}
 
   // get
-  XY pos() { return XY(x, y); }
+  Vec2 pos() { return Vec2(x, y); }
   pix xPos() { return x; }
   pix yPos() { return y; }
   pix maxX() { return maxX_m; }
@@ -43,7 +44,7 @@ class Ball : public SDL_Rect {
 
   int xstep{0};
   int ystep{0};
-  XY target_M;
+  Vec2  target_M;
 
   void initialiseSteps();
   Bounds hitDetector(Paddle* player, Paddle* opponent);

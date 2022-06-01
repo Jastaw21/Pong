@@ -2,18 +2,18 @@
 
 #ifndef LOCATION_H
 #define LOCATION_H
-class XY {
+class Vec2  {
  public:
-  XY(int x, int y) : x_mem(x), y_mem(y) {}
+  Vec2 (int x, int y) : x_mem(x), y_mem(y) {}
 
   // overloads
-  friend XY operator+(XY left, XY right);
-  friend XY operator-(XY left, XY right);
-  friend XY operator*(XY left, XY right);
-  friend XY operator/(XY left, XY right);
-  friend XY operator*(XY left, int right);
-  friend bool operator==(XY left, XY right);
-  XY operator=(XY right);
+  friend Vec2  operator+(XY left, Vec2  right);
+  friend Vec2  operator-(XY left, Vec2  right);
+  friend Vec2  operator*(XY left, Vec2  right);
+  friend Vec2  operator/(XY left, Vec2  right);
+  friend Vec2  operator*(XY left, int right);
+  friend bool operator==(XY left, Vec2  right);
+  Vec2  operator=(XY right);
 
   // getters
   int x() { return x_mem; }
