@@ -21,13 +21,15 @@ class Ball : public SDL_Rect {
         target_M{0, 120} {}
 
 
-  void move(int tick, Paddle* player, Paddle* opponent);
+ 
   // get
   XY pos() { return XY(x, y); }
   pix xPos() { return x; }
   pix yPos() { return y; }
   pix maxX() { return maxX_m; }
   pix maxY() { return maxY_m; }
+  // update
+  void move(int tick, Paddle* player, Paddle* opponent);
   void ballDraw(SDL_Renderer* rendererP);
 
  private:
