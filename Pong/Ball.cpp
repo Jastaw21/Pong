@@ -1,6 +1,6 @@
 #include "Ball.h"
 
-// set
+
 
 void Ball::move(int tick, Paddle* player, Paddle* opponent) {
   // give one second delay
@@ -22,8 +22,6 @@ void Ball::move(int tick, Paddle* player, Paddle* opponent) {
     lastmovetick = tick;
   }
 }
-
-
 Bounds Ball::hitDetector(Paddle* player, Paddle* opponent) {
   paddleHit(player, opponent);
   bool xhit = (x <= 0 || x >= maxX_m) ? true : false;
@@ -42,7 +40,6 @@ Bounds Ball::hitDetector(Paddle* player, Paddle* opponent) {
   }
   return x > 0 ? Bounds::TOPRIGHT : Bounds::TOPLEFT;
 }
-
 void Ball::hitHandler(Bounds hitarea, Paddle* player, Paddle* opponent) {
   switch (hitarea) {
     case Bounds::TOP:
