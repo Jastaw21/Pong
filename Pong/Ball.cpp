@@ -18,7 +18,7 @@ void Ball::move(int tick, Paddle* player, Paddle* opponent) {
     x += xstep;
     y += ystep;
 
-    hitHandler(hitDetector(player, opponent),player,opponent);
+    hitHandler(hitDetector(player, opponent), player, opponent);
     lastmovetick = tick;
   }
 }

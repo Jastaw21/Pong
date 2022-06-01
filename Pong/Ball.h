@@ -20,7 +20,7 @@ class Ball : public SDL_Rect {
         size_m{size},
         target_M{0, 120} {}
 
-  void move(int tick, int playerY, int opponentY, int size);
+
   void move(int tick, Paddle* player, Paddle* opponent);
   // get
   XY pos();
@@ -46,8 +46,6 @@ class Ball : public SDL_Rect {
   XY target_M;
 
   void initialiseSteps();
-  void hitHandler(Bounds hitarea);
-  Bounds hitDetector(int playerY, int opponentY, int size);
   Bounds hitDetector(Paddle* player, Paddle* opponent);
   void hitHandler(Bounds hitarea, Paddle* player, Paddle* opponent);
 };
