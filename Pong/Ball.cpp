@@ -31,6 +31,7 @@ pix Ball::maxX() { return maxX_m; }
 pix Ball::maxY() { return maxY_m; }
 
 Bounds Ball::hitDetector(Paddle* player, Paddle* opponent) {
+  paddleHit(player, opponent);
   bool xhit = (x <= 0 || x >= maxX_m) ? true : false;
   bool yhit = (y <= 0 || y >= maxY_m) ? true : false;
   if (!xhit && !yhit) {
@@ -84,6 +85,7 @@ void Ball::hitHandler(Bounds hitarea, Paddle* player, Paddle* opponent) {
       break;
   }
 }
+int Ball::paddleHit(Paddle* player, Paddle* opponent) { return 0; }
 void Ball::initialiseSteps() {
   int deltax = target_M.x() - x;
   int deltay = target_M.y() - y;
