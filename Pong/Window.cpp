@@ -59,10 +59,8 @@ void Window::draw() {
   SDL_SetRenderDrawColor(renderer_m, 55, 55, 55, 0);
   SDL_RenderClear(renderer_m);
 
-  fontmgr_m.draw(renderer_m, player->draw_rect, drawtext1);
-  fontmgr_m.draw(renderer_m, opponent->draw_rect, drawtext2);
-  player->paddleDraw(renderer_m);
-  opponent->paddleDraw(renderer_m);
+  player->paddleDraw(renderer_m, &fontmgr_m);
+  opponent->paddleDraw(renderer_m, &fontmgr_m);
   ball->ballDraw(renderer_m);
   // draw the vertical line
   SDL_SetRenderDrawColor(renderer_m, 255, 255, 255, 200);
@@ -70,7 +68,7 @@ void Window::draw() {
     SDL_Rect dot = {static_cast<int>(width_m / 2), i, 4, 4};
     SDL_RenderFillRect(renderer_m, &dot);
   }
-
+  SDL_RenderPresent(renderer_m);
 }
 void Window::loop() {
   SDL_Event eventM;
@@ -86,7 +84,7 @@ void Window::loop() {
         keypressHandle(eventM.key.keysym.sym);
       }
     }
-    ball->move(ticks_m, player->x(), opponent->x(), player->length());
+    ball->move(ticks_m, player, opponent);
     draw();
   }
   close();

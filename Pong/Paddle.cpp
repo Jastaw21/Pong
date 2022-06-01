@@ -49,7 +49,11 @@ int Opponent::maxY() { return (yMax - length_m); }
 
 void Paddle::score() { score_m += 1; }
 
-void Paddle::paddleDraw(SDL_Renderer* renderer_P) {
+void Paddle::paddleDraw(SDL_Renderer* renderer_P, FontManager* fontmanager) {
   SDL_SetRenderDrawColor(renderer_P, r_m, g_m, b_m, 255);
-  SDL_RenderFillRect(renderer_P, &rectangle_m);
+  SDL_RenderFillRect(renderer_P, &rectangle_m);  
+  std::string s = std::to_string(score_m);
+  const char* sd = s.c_str();
+  fontmanager->draw(renderer_P, draw_rect, sd);
+
 }

@@ -2,7 +2,7 @@
 
 // set
 
-void Ball::move(int tick, int playerY, int opponentY, int size) {
+void Ball::move(int tick, Paddle* player, Paddle* opponent) {
   // give one second delay
   if (tick < 1000) {
     return;
@@ -17,7 +17,8 @@ void Ball::move(int tick, int playerY, int opponentY, int size) {
   {
     x += xstep;
     y += ystep;
-    hitHandler(hitDetector(playerY, opponentY, size));
+
+    hitHandler(hitDetector(player, opponent),player,opponent);
     lastmovetick = tick;
   }
 }
@@ -29,7 +30,7 @@ pix Ball::yPos() { return y; }
 pix Ball::maxX() { return maxX_m; }
 pix Ball::maxY() { return maxY_m; }
 
-Bounds Ball::hitDetector(int playerY, int opponentY, int size) {
+Bounds Ball::hitDetector(Paddle* player, Paddle* opponent) {
   bool xhit = (x <= 0 || x >= maxX_m) ? true : false;
   bool yhit = (y <= 0 || y >= maxY_m) ? true : false;
   if (!xhit && !yhit) {
@@ -46,35 +47,22 @@ Bounds Ball::hitDetector(int playerY, int opponentY, int size) {
   }
   return x > 0 ? Bounds::TOPRIGHT : Bounds::TOPLEFT;
 }
-void Ball::initialiseSteps() {
-  int deltax = target_M.x() - x;
-  int deltay = target_M.y() - y;
-  double xscale = fabs(deltax) / (fabs(deltax) + fabs(deltay));
-  double yscale = 1.0 - xscale;
-  double xmov =
-      deltax < 0.0 ? -Settings::MoveStep * xscale : Settings::MoveStep * xscale;
-  double ymov =
-      deltay < 0.0 ? -Settings::MoveStep * yscale : Settings::MoveStep * yscale;
-  xstep = static_cast<int>(round(xmov));
-  ystep = static_cast<int>(round(ymov));
-  stepsinit = true;
-}
-void Ball::hitHandler(Bounds hitarea) {
+
+void Ball::hitHandler(Bounds hitarea, Paddle* player, Paddle* opponent) {
   switch (hitarea) {
     case Bounds::TOP:
       ystep *= -1;
       break;
     case Bounds::LEFT:
       xstep *= -1;
-
-      printf("Player Conceded\n");
+      opponent->score();
       break;
     case Bounds::BOTTOM:
       ystep *= -1;
       break;
     case Bounds::RIGHT:
       xstep *= -1;
-      printf("Opponent Conceded\n");
+      player->score();
       break;
     case Bounds::NONE:
       break;
@@ -95,6 +83,19 @@ void Ball::hitHandler(Bounds hitarea) {
       ystep *= -1;
       break;
   }
+}
+void Ball::initialiseSteps() {
+  int deltax = target_M.x() - x;
+  int deltay = target_M.y() - y;
+  double xscale = fabs(deltax) / (fabs(deltax) + fabs(deltay));
+  double yscale = 1.0 - xscale;
+  double xmov =
+      deltax < 0.0 ? -Settings::MoveStep * xscale : Settings::MoveStep * xscale;
+  double ymov =
+      deltay < 0.0 ? -Settings::MoveStep * yscale : Settings::MoveStep * yscale;
+  xstep = static_cast<int>(round(xmov));
+  ystep = static_cast<int>(round(ymov));
+  stepsinit = true;
 }
 void Ball::ballDraw(SDL_Renderer* rendererP) {
   SDL_SetRenderDrawColor(rendererP, r_m, g_m, b_m, 255);

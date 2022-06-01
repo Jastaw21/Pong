@@ -12,7 +12,6 @@ class FontManager {
 
   bool init();
   bool loadfont();
-  SDL_Surface* surfaceGen();
   void close();
   void draw(SDL_Renderer* rendererP, SDL_Rect& drawrect, const char* score);
  

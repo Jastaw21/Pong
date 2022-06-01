@@ -10,7 +10,6 @@ bool FontManager::init() {
     }
   }
 }
-
 bool FontManager::loadfont() {
   font_ptr = TTF_OpenFont("bit5x3.ttf", font_size);
   if (!font_ptr) {
@@ -21,10 +20,6 @@ bool FontManager::loadfont() {
   }
 }
 
-SDL_Surface* FontManager::surfaceGen() {
-  fontSurf = TTF_RenderUTF8_Solid(font_ptr, "0", font_colour);
-  return fontSurf;
-}
 
 void FontManager::close() {
   TTF_CloseFont(font_ptr);
