@@ -20,8 +20,6 @@ class Ball : public SDL_Rect {
         size_m{size},
         target_M{0, 120} {}
 
-
- 
   // get
   XY pos() { return XY(x, y); }
   pix xPos() { return x; }
