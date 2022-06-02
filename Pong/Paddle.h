@@ -14,7 +14,7 @@
 class Paddle {
  public:
   Paddle(WindowGeom wg, int xpos, int textXpos, int textYpos, int textSize,
-         int width = 5, int length = 90)
+         int width = 5, int length = 50)
       : pos(xpos, wg.HEIGHT - (length / 2)),
         length_m(length),
         width_m(width),

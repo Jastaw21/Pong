@@ -30,13 +30,13 @@
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="GameObjects.h" />
-    <ClCompile Include="Location.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="Bounds.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="Paddle.h" />

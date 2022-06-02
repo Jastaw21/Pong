@@ -10,6 +10,7 @@
 #include "Vec2.h"
 #include "Paddle.h"
 #include "Settings.h"
+#include "Bounds.h"
 #include <Vec2.h>
 
 class Ball : public SDL_Rect {
