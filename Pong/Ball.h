@@ -2,16 +2,16 @@
 #define BALL_H
 
 #include <SDL.h>
+#include <Vec2.h>
 
 #include <iostream>
 
+#include "Bounds.h"
 #include "Clamp.h"
 #include "Geometry.h"
-#include "Vec2.h"
 #include "Paddle.h"
 #include "Settings.h"
-#include "Bounds.h"
-#include <Vec2.h>
+#include "Vec2.h"
 
 class Ball : public SDL_Rect {
  public:
@@ -45,7 +45,7 @@ class Ball : public SDL_Rect {
 
   int xstep{0};
   int ystep{0};
-  Vec2  target_M;
+  Vec2 target_M;
 
   void initialiseSteps();
   Bounds hitDetector(Paddle* player, Paddle* opponent);

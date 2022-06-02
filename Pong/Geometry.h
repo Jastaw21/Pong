@@ -10,6 +10,4 @@ struct WindowGeom {
   const pix HEIGHT = 480;
 };
 
-
-
 #endif

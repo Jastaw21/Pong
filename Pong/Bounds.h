@@ -15,5 +15,4 @@ enum class Bounds {
   OPPONENT
 };
 
-
 #endif  // !BOUNDS_H

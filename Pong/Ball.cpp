@@ -1,7 +1,5 @@
 #include "Ball.h"
 
-
-
 void Ball::move(int tick, Paddle* player, Paddle* opponent) {
   // give one second delay
   if (tick < 1000) {
