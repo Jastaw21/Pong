@@ -20,7 +20,8 @@ class Ball : public SDL_Rect {
         maxY_m(wg.HEIGHT - size),
         maxX_m(wg.WIDTH - size),
         size_m{size},
-        target_M{0, 120} {}
+        target_M{0, 120},
+        centre{wg.WIDTH / 2 - (size / 2), wg.HEIGHT / 2} {}
 
   // get
   Vec2 pos() { return Vec2(x, y); }
@@ -39,18 +40,17 @@ class Ball : public SDL_Rect {
   int size_m{};
   int maxY_m{};
   int maxX_m{};
-
+  Vec2 centre{0, 0};
   unsigned long long lastmovetick{0};
   bool stepsinit{false};
-
   int xstep{0};
   int ystep{0};
   Vec2 target_M;
-
   void initialiseSteps();
   Bounds hitDetector(Paddle* player, Paddle* opponent);
   void hitHandler(Bounds hitarea, Paddle* player, Paddle* opponent);
   int paddleHit(Paddle* player, Paddle* opponent);
+  void resetBall();
 };
 
 #endif

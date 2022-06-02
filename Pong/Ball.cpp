@@ -22,6 +22,15 @@ void Ball::move(int tick, Paddle* player, Paddle* opponent) {
 }
 Bounds Ball::hitDetector(Paddle* player, Paddle* opponent) {
   paddleHit(player, opponent);
+  // check player hit
+  if (x <= (player->x() + player->width()) && y >= player->y() &&
+      y <= (player->y() + player->length())) {
+    return Bounds::PLAYER;
+  }
+  if (x <= (opponent->x() + opponent->width()) && y >= opponent->y() &&
+      y <= (opponent->y() + opponent->length())) {
+    return Bounds::OPPONENT;
+  }
   bool xhit = (x <= 0 || x >= maxX_m) ? true : false;
   bool yhit = (y <= 0 || y >= maxY_m) ? true : false;
   if (!xhit && !yhit) {
@@ -46,6 +55,8 @@ void Ball::hitHandler(Bounds hitarea, Paddle* player, Paddle* opponent) {
     case Bounds::LEFT:
       xstep *= -1;
       opponent->score();
+      stepsinit = false;
+      resetBall();
       break;
     case Bounds::BOTTOM:
       ystep *= -1;
@@ -53,6 +64,8 @@ void Ball::hitHandler(Bounds hitarea, Paddle* player, Paddle* opponent) {
     case Bounds::RIGHT:
       xstep *= -1;
       player->score();
+      stepsinit = false;
+      resetBall();
       break;
     case Bounds::NONE:
       break;
@@ -72,9 +85,17 @@ void Ball::hitHandler(Bounds hitarea, Paddle* player, Paddle* opponent) {
       xstep *= -1;
       ystep *= -1;
       break;
+    case Bounds::PLAYER:
+      xstep *= -1;
+      ystep *= -1;
+      break;
   }
 }
 int Ball::paddleHit(Paddle* player, Paddle* opponent) { return 0; }
+void Ball::resetBall() {
+  x = centre.x();
+  y = centre.y();
+}
 void Ball::initialiseSteps() {
   int deltax = target_M.x() - x;
   int deltay = target_M.y() - y;

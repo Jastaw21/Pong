@@ -14,7 +14,7 @@ class FontManager {
   bool loadfont();
   void close();
   void draw(SDL_Renderer* rendererP, SDL_Rect& drawrect, const char* score);
- 
+
   TTF_Font* font_ptr = nullptr;
   SDL_Surface* fontSurf = nullptr;
   SDL_Texture* texture = nullptr;
