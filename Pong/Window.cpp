@@ -96,19 +96,19 @@ void Window::keypressHandle(SDL_Keycode key) {
       break;
     }
     case SDLK_UP: {
-      player->up(10);
+      player->up(Settings::PaddleMoveStep);
       break;
     }
     case SDLK_DOWN: {
-      player->down(10);
+      player->down(Settings::PaddleMoveStep);
       break;
     }
     case SDLK_w: {
-      player->up(10);
+      player->up(Settings::PaddleMoveStep);
       break;
     }
     case SDLK_s: {
-      player->down(10);
+      player->down(Settings::PaddleMoveStep);
       break;
     }
     default:
