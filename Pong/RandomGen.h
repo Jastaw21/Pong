@@ -10,6 +10,9 @@ class RandomGen {
  public:
   RandomGen(WindowGeom wg) : xrand{0, wg.WIDTH}, yrand{0, wg.HEIGHT} {}
 
+  unsigned int xGen();
+  unsigned int yGen();
+
  private:
   std::mt19937 twister{static_cast<unsigned int>(
       std::chrono::steady_clock::now().time_since_epoch().count())};
