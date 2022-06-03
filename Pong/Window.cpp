@@ -45,7 +45,6 @@ bool Window::load() {
   }
   return success;
 }
-
 void Window::close() {
   SDL_DestroyRenderer(this->renderer_m);
   SDL_DestroyWindow(this->window_m);

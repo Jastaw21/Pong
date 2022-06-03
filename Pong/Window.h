@@ -9,9 +9,9 @@
 #include <iostream>
 #include <string>
 
-#include "Settings.h"
 #include "FontManager.h"
 #include "GameObjects.h"
+#include "Settings.h"
 
 class Window {
  public:
@@ -57,17 +57,22 @@ class Window {
   int ticks_m{};
 
  private:
-  bool run_M{true};
+  // dimensions
   WindowGeom geom;
   pix height_m{};
   pix width_m{};
+
+  // pointers to SDL items
   SDL_Window* window_m = NULL;
   SDL_Renderer* renderer_m = NULL;
   SDL_Surface* surf_m = NULL;
-  std::string title_m = "PONG";
+
+  std::string title_m = "PONG";  // window title
+
+  // helper classes
   FontManager fontmgr_m;
-  SDL_Rect drawrect{10, 10, 100, 100};
-  const char* drawtext1 = "1";
-  const char* drawtext2 = "2";
+
+  // loop flag
+  bool run_M{true};
 };
 #endif
