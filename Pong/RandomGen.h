@@ -1,6 +1,8 @@
 #ifndef RANDOMGEN_H
 #define RANDOMGEN_H
 
+#include <Clamp.h>
+
 #include <chrono>
 #include <random>
 
@@ -8,7 +10,10 @@
 
 class RandomGen {
  public:
-  RandomGen(WindowGeom wg) : xrand{0, wg.WIDTH}, yrand{0, wg.HEIGHT} {}
+  RandomGen(WindowGeom wg)
+      : xrand{0, wg.WIDTH},
+        yrand{0, wg.HEIGHT},
+        xMidpoint(static_cast<int>(wg.WIDTH / 2)) {}
 
   unsigned int xGen();
   unsigned int yGen();
@@ -18,6 +23,7 @@ class RandomGen {
       std::chrono::steady_clock::now().time_since_epoch().count())};
   std::uniform_int_distribution<> xrand{};
   std::uniform_int_distribution<> yrand{};
+  int xMidpoint{};
 };
 
 #endif  // !RANDOMGEN_H
