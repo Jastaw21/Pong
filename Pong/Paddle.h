@@ -11,6 +11,7 @@
 #include "Bounds.h"
 #include "FontManager.h"
 #include "Geometry.h"
+#include "Settings.h"
 #include "Vec2.h"
 
 class Paddle {
@@ -65,7 +66,6 @@ class Paddle {
   int score_m{0};
 };
 
-// basically just aliases at this point
 class Player : public Paddle {
  public:
   Player(WindowGeom wg) : Paddle{wg, 10, 50, 15, 100} {}
@@ -74,6 +74,7 @@ class Player : public Paddle {
   virtual int maxY();
   virtual Bounds bounds() { return Bounds::PLAYER; }
 };
+
 class Opponent : public Paddle {
  public:
   Opponent(WindowGeom wg)
@@ -83,6 +84,8 @@ class Opponent : public Paddle {
   virtual int maxX();
   virtual int maxY();
   virtual Bounds bounds() { return Bounds::OPPONENT; }
+  void aiMove(int xstep, int ystep);
+  int desiredYpos{};
 };
 
 #endif

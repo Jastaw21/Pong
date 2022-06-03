@@ -72,19 +72,27 @@ void Window::draw() {
 void Window::loop() {
   SDL_Event eventM;
   while (run_M) {
+    Uint64 start = SDL_GetPerformanceCounter();
     // while running - update ticks every loop
     tick();
 
+    // event loop
     while (SDL_PollEvent(&eventM) != 0) {
       if (eventM.type == SDL_QUIT) {
-        // catch a quit and set the run flag to false to end at the next loop
         run_M = false;
       } else if (eventM.type = SDL_KEYDOWN) {
         keypressHandle(eventM.key.keysym.sym);
       }
     }
+    // game objects loop
     ball->move(ticks_m, player, opponent);
+    opponent->aiMove(ball->xstep, ball->ystep);
+    // render loop
     draw();
+
+    Uint64 end = SDL_GetPerformanceCounter();
+    float elapsed = (end - start) / (float)SDL_GetPerformanceFrequency();
+    SDL_Delay(static_cast<Uint32>(floor(16.666f - elapsed)));
   }
   close();
 }

@@ -31,9 +31,12 @@ class Ball : public SDL_Rect {
   pix yPos() { return y; }
   pix maxX() { return maxX_m; }
   pix maxY() { return maxY_m; }
+  Vec2<int> target() { return target_M; }
   // update
   void move(int tick, Paddle* player, Paddle* opponent);
   void ballDraw(SDL_Renderer* rendererP);
+  int xstep{0};
+  int ystep{0};
 
  private:
   const int r_m{255};
@@ -47,8 +50,7 @@ class Ball : public SDL_Rect {
 
   unsigned long long lastmovetick{0};
   bool stepsinit{false};
-  int xstep{0};
-  int ystep{0};
+
   ms delay{0};
 
   void initialiseSteps();

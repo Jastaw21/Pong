@@ -10,8 +10,7 @@ void Ball::move(int tick, Paddle* player, Paddle* opponent) {
   if (!stepsinit) {
     initialiseSteps();
   }
-  if (tick - lastmovetick >
-      (Settings::MoveInterval + delay))  // if enough ticks have passed
+  if (tick - lastmovetick > delay)  // if enough ticks have passed
   {
     x += xstep;
     y += ystep;

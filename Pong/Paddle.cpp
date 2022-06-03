@@ -55,6 +55,14 @@ int Player::maxY() { return (yMax - length_m); }
 int Opponent::maxX() { return xMax - width_m; }
 int Opponent::maxY() { return (yMax - length_m); }
 
+void Opponent::aiMove(int xstep, int ystep) {
+  if (xstep > 0) {
+    up(Settings::PaddleMoveStep);
+  } else {
+    down(Settings::PaddleMoveStep);
+  }
+}
+
 void Paddle::score() { score_m += 1; }
 
 void Paddle::paddleDraw(SDL_Renderer* renderer_P, FontManager* fontmanager) {
