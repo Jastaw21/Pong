@@ -28,6 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="GameObjects.h" />
     <ClCompile Include="main.cpp" />
@@ -38,6 +39,7 @@
   <ItemGroup>
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Bounds.h" />
+    <ClInclude Include="EventManager.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="Paddle.h" />
