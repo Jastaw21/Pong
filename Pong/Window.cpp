@@ -70,20 +70,12 @@ void Window::draw() {
   SDL_RenderPresent(renderer_m);
 }
 void Window::loop() {
-  SDL_Event eventM;
   while (run_M) {
     Uint64 start = SDL_GetPerformanceCounter();
     // while running - update ticks every loop
     tick();
 
-    // event loop
-    while (SDL_PollEvent(&eventM) != 0) {
-      if (eventM.type == SDL_QUIT) {
-        run_M = false;
-      } else if (eventM.type = SDL_KEYDOWN) {
-        keypressHandle(eventM.key.keysym.sym);
-      }
-    }
+    eventmgr_m.loop(run_M);
     // game objects loop
     ball->move(ticks_m, player, opponent);
     opponent->aiMove(ball->xstep, ball->ystep);

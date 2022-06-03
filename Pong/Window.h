@@ -9,6 +9,7 @@
 #include <iostream>
 #include <string>
 
+#include "EventManager.h"
 #include "FontManager.h"
 #include "GameObjects.h"
 #include "Settings.h"
@@ -71,6 +72,7 @@ class Window {
 
   // helper classes
   FontManager fontmgr_m;
+  EventManager eventmgr_m;
 
   // loop flag
   bool run_M{true};
