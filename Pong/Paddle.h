@@ -50,7 +50,7 @@ class Paddle {
  protected:
   int length_m;  // size
   int width_m;
-  Vec2 pos;            // position
+  Vec2<int> pos;       // position
   const int r_m{255};  // colour
   const int g_m{255};
   const int b_m{255};
