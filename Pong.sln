@@ -15,6 +15,8 @@ Global
 		Debug|x86 = Debug|x86
 		MyRelease|x64 = MyRelease|x64
 		MyRelease|x86 = MyRelease|x86
+		PongRelease|x64 = PongRelease|x64
+		PongRelease|x86 = PongRelease|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
@@ -27,6 +29,10 @@ Global
 		{C127DA57-4441-4DB5-A201-37D8CA687AD0}.MyRelease|x64.Build.0 = MyRelease|x64
 		{C127DA57-4441-4DB5-A201-37D8CA687AD0}.MyRelease|x86.ActiveCfg = MyRelease|Win32
 		{C127DA57-4441-4DB5-A201-37D8CA687AD0}.MyRelease|x86.Build.0 = MyRelease|Win32
+		{C127DA57-4441-4DB5-A201-37D8CA687AD0}.PongRelease|x64.ActiveCfg = PongRelease|x64
+		{C127DA57-4441-4DB5-A201-37D8CA687AD0}.PongRelease|x64.Build.0 = PongRelease|x64
+		{C127DA57-4441-4DB5-A201-37D8CA687AD0}.PongRelease|x86.ActiveCfg = PongRelease|Win32
+		{C127DA57-4441-4DB5-A201-37D8CA687AD0}.PongRelease|x86.Build.0 = PongRelease|Win32
 		{C127DA57-4441-4DB5-A201-37D8CA687AD0}.Release|x64.ActiveCfg = Release|x64
 		{C127DA57-4441-4DB5-A201-37D8CA687AD0}.Release|x64.Build.0 = Release|x64
 		{C127DA57-4441-4DB5-A201-37D8CA687AD0}.Release|x86.ActiveCfg = Release|Win32
@@ -39,6 +45,10 @@ Global
 		{BF318264-D542-47B9-A6C3-061254C3472F}.MyRelease|x64.Build.0 = MyRelease|x64
 		{BF318264-D542-47B9-A6C3-061254C3472F}.MyRelease|x86.ActiveCfg = MyRelease|Win32
 		{BF318264-D542-47B9-A6C3-061254C3472F}.MyRelease|x86.Build.0 = MyRelease|Win32
+		{BF318264-D542-47B9-A6C3-061254C3472F}.PongRelease|x64.ActiveCfg = PongRelease|x64
+		{BF318264-D542-47B9-A6C3-061254C3472F}.PongRelease|x64.Build.0 = PongRelease|x64
+		{BF318264-D542-47B9-A6C3-061254C3472F}.PongRelease|x86.ActiveCfg = PongRelease|Win32
+		{BF318264-D542-47B9-A6C3-061254C3472F}.PongRelease|x86.Build.0 = PongRelease|Win32
 		{BF318264-D542-47B9-A6C3-061254C3472F}.Release|x64.ActiveCfg = Release|x64
 		{BF318264-D542-47B9-A6C3-061254C3472F}.Release|x64.Build.0 = Release|x64
 		{BF318264-D542-47B9-A6C3-061254C3472F}.Release|x86.ActiveCfg = Release|Win32
@@ -51,6 +61,10 @@ Global
 		{DDDBD07D-DC76-4AF6-8D02-3E2DEB6EE255}.MyRelease|x64.Build.0 = Release|x64
 		{DDDBD07D-DC76-4AF6-8D02-3E2DEB6EE255}.MyRelease|x86.ActiveCfg = Release|Win32
 		{DDDBD07D-DC76-4AF6-8D02-3E2DEB6EE255}.MyRelease|x86.Build.0 = Release|Win32
+		{DDDBD07D-DC76-4AF6-8D02-3E2DEB6EE255}.PongRelease|x64.ActiveCfg = PongRelease|x64
+		{DDDBD07D-DC76-4AF6-8D02-3E2DEB6EE255}.PongRelease|x64.Build.0 = PongRelease|x64
+		{DDDBD07D-DC76-4AF6-8D02-3E2DEB6EE255}.PongRelease|x86.ActiveCfg = PongRelease|Win32
+		{DDDBD07D-DC76-4AF6-8D02-3E2DEB6EE255}.PongRelease|x86.Build.0 = PongRelease|Win32
 		{DDDBD07D-DC76-4AF6-8D02-3E2DEB6EE255}.Release|x64.ActiveCfg = Release|x64
 		{DDDBD07D-DC76-4AF6-8D02-3E2DEB6EE255}.Release|x64.Build.0 = Release|x64
 		{DDDBD07D-DC76-4AF6-8D02-3E2DEB6EE255}.Release|x86.ActiveCfg = Release|Win32

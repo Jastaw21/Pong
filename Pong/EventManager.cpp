@@ -16,6 +16,12 @@ void EventManager::keypress(SDL_Keycode keyPressed, bool& runflag) {
       runflag = false;
       break;
     }
+    case SDLK_UP:
+      objects_m->player.up(10);
+      break;
+    case SDLK_DOWN:
+      objects_m->player.down(10);
+      break;
     default:
       break;
   }

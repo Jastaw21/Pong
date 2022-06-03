@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by Pong.rc
+// Used by Resource.rc
 //
 #define IDR_FONT1                       101
 

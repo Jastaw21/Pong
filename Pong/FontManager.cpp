@@ -12,6 +12,7 @@ bool FontManager::init() {
 }
 bool FontManager::loadfont() {
   font_ptr = TTF_OpenFont("bit5x3.ttf", font_size);
+
   if (!font_ptr) {
     printf("Couldn't open font: %s\n", TTF_GetError());
     return false;
@@ -19,7 +20,6 @@ bool FontManager::loadfont() {
     return true;
   }
 }
-
 
 void FontManager::close() {
   TTF_CloseFont(font_ptr);

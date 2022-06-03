@@ -17,7 +17,11 @@
 class Window {
  public:
   Window(WindowGeom wg, GameObjects* objectsP)
-      : geom(wg), height_m(wg.HEIGHT), width_m(wg.WIDTH), objects(objectsP) {}
+      : geom(wg),
+        height_m(wg.HEIGHT),
+        width_m(wg.WIDTH),
+        objects(objectsP),
+        eventmgr_m(objectsP) {}
 
   ~Window() {
     close();
@@ -35,10 +39,8 @@ class Window {
 
   // state managers
   bool load();
-  void close();
-  void draw();
-  void tick() { ticks_m = SDL_GetTicks(); };
   void loop();
+  void close();
 
  private:
   GameObjects* objects = nullptr;
@@ -56,9 +58,12 @@ class Window {
 
   // helper classes
   FontManager fontmgr_m;
-  EventManager eventmgr_m{};
+  EventManager eventmgr_m;
 
   // loop flag
   bool run_M{true};
+
+  void draw();
+  void tick() { ticks_m = SDL_GetTicks(); };
 };
 #endif

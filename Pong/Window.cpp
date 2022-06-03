@@ -58,9 +58,9 @@ void Window::draw() {
   // clear screen with black
   SDL_SetRenderDrawColor(renderer_m, 0, 0, 0, 0);
   SDL_RenderClear(renderer_m);
-  objects->player.paddleDraw(renderer_m, &fontmgr_m);
-  objects->opponent.paddleDraw(renderer_m, &fontmgr_m);
-  objects->ball.ballDraw(renderer_m);
+
+  // draw the movable objects
+  objects->draw(renderer_m, &fontmgr_m);
 
   // draw the vertical line
   SDL_SetRenderDrawColor(renderer_m, 255, 255, 255, 200);
@@ -76,6 +76,7 @@ void Window::loop() {
     // while running - update ticks every loop
     tick();
 
+    // handle events
     eventmgr_m.loop(run_M);
     // game objects loop
     objects->ball.move(ticks_m, &objects->player, &objects->opponent);
