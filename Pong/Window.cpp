@@ -50,6 +50,7 @@ void Window::close() {
   SDL_DestroyWindow(this->window_m);
   window_m = nullptr;
   renderer_m = nullptr;
+  objects = nullptr;
   fontmgr_m.close();
   SDL_Quit();
 }
@@ -57,10 +58,10 @@ void Window::draw() {
   // clear screen with black
   SDL_SetRenderDrawColor(renderer_m, 0, 0, 0, 0);
   SDL_RenderClear(renderer_m);
+  objects->player.paddleDraw(renderer_m, &fontmgr_m);
+  objects->opponent.paddleDraw(renderer_m, &fontmgr_m);
+  objects->ball.ballDraw(renderer_m);
 
-  player->paddleDraw(renderer_m, &fontmgr_m);
-  opponent->paddleDraw(renderer_m, &fontmgr_m);
-  ball->ballDraw(renderer_m);
   // draw the vertical line
   SDL_SetRenderDrawColor(renderer_m, 255, 255, 255, 200);
   for (int i{5}; i < height_m; i += 10) {
@@ -77,8 +78,9 @@ void Window::loop() {
 
     eventmgr_m.loop(run_M);
     // game objects loop
-    ball->move(ticks_m, player, opponent);
-    opponent->aiMove(ball->xstep, ball->ystep);
+    objects->ball.move(ticks_m, &objects->player, &objects->opponent);
+    objects->opponent.aiMove(objects->ball.xstep, objects->ball.ystep);
+
     // render loop
     draw();
 
@@ -87,30 +89,4 @@ void Window::loop() {
     SDL_Delay(static_cast<Uint32>(floor(16.666f - elapsed)));
   }
   close();
-}
-void Window::keypressHandle(SDL_Keycode key) {
-  switch (key) {
-    case SDLK_ESCAPE: {
-      run_M = false;
-      break;
-    }
-    case SDLK_UP: {
-      player->up(Settings::PaddleMoveStep);
-      break;
-    }
-    case SDLK_DOWN: {
-      player->down(Settings::PaddleMoveStep);
-      break;
-    }
-    case SDLK_w: {
-      player->up(Settings::PaddleMoveStep);
-      break;
-    }
-    case SDLK_s: {
-      player->down(Settings::PaddleMoveStep);
-      break;
-    }
-    default:
-      break;
-  }
 }

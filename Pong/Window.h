@@ -16,20 +16,12 @@
 
 class Window {
  public:
-  Window(WindowGeom wg, Player* playerP, Opponent* opponentP, Ball* ballP)
-      : geom(wg),
-        height_m(wg.HEIGHT),
-        width_m(wg.WIDTH),
-        player(playerP),
-        opponent(opponentP),
-        ball(ballP) {}
+  Window(WindowGeom wg, GameObjects* objectsP)
+      : geom(wg), height_m(wg.HEIGHT), width_m(wg.WIDTH), objects(objectsP) {}
 
   ~Window() {
     close();
     surf_m = nullptr;
-    player = nullptr;
-    opponent = nullptr;
-    ball = nullptr;
   }
 
   // getters
@@ -48,17 +40,9 @@ class Window {
   void tick() { ticks_m = SDL_GetTicks(); };
   void loop();
 
-  // event handlers
-  void keypressHandle(SDL_Keycode key);
-
-  // game objects
-  Player* player = nullptr;
-  Opponent* opponent = nullptr;
-  Ball* ball = nullptr;
-  int ticks_m{};
-
  private:
-  // dimensions
+  GameObjects* objects = nullptr;
+  int ticks_m{};
   WindowGeom geom;
   pix height_m{};
   pix width_m{};
