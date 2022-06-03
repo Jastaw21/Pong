@@ -31,8 +31,8 @@ Bounds Ball::hitDetector(Paddle* player, Paddle* opponent) {
       y <= (opponent->y() + opponent->length())) {
     return Bounds::OPPONENT;
   }
-  bool xhit = (x <= 0 || x >= maxX_m) ? true : false;
-  bool yhit = (y <= 0 || y >= maxY_m) ? true : false;
+  bool xhit = (x <= 0 || x >= (maxX_m - w)) ? true : false;
+  bool yhit = (y <= 0 || y >= (maxY_m - h)) ? true : false;
   if (!xhit && !yhit) {
     return Bounds::NONE;
   }

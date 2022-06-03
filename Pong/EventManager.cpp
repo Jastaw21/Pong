@@ -17,10 +17,16 @@ void EventManager::keypress(SDL_Keycode keyPressed, bool& runflag) {
       break;
     }
     case SDLK_UP:
-      objects_m->player.up(10);
+      objects_m->player.up(Settings::PaddleMoveStep);
       break;
     case SDLK_DOWN:
-      objects_m->player.down(10);
+      objects_m->player.down(Settings::PaddleMoveStep);
+      break;
+    case SDLK_w:
+      objects_m->player.up(Settings::PaddleMoveStep);
+      break;
+    case SDLK_s:
+      objects_m->player.down(Settings::PaddleMoveStep);
       break;
     default:
       break;

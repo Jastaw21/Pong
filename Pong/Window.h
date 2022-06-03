@@ -23,20 +23,6 @@ class Window {
         objects(objectsP),
         eventmgr_m(objectsP) {}
 
-  ~Window() {
-    close();
-    surf_m = nullptr;
-  }
-
-  // getters
-
-  SDL_Window* window() { return window_m; };
-  SDL_Renderer* render() { return renderer_m; };
-
-  // setters
-  void heightset(pix heightP) { height_m = heightP; };
-  void widthset(pix widthP) { width_m = widthP; };
-
   // state managers
   bool load();
   void loop();
@@ -54,7 +40,7 @@ class Window {
   SDL_Renderer* renderer_m = NULL;
   SDL_Surface* surf_m = NULL;
 
-  std::string title_m = "PONG";  // window title
+  std::string title_m = "Pong";  // window title
 
   // helper classes
   FontManager fontmgr_m;

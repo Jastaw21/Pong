@@ -4,6 +4,7 @@
 #include <SDL.h>
 
 #include "GameObjects.h"
+#include "Settings.h"
 
 class EventManager {
  public:
