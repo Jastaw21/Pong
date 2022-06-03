@@ -6,8 +6,8 @@
 struct Settings {
   static const ms MoveInterval = 15;
   static const ms InitalDelay = 1000;
-  static const pix MoveStep = 6;
-  static const pix PaddleMoveStep = 17;
+  static const pix MoveStep = 8;
+  static const pix PaddleMoveStep = 15;
 };
 
 #endif  // !SETTINGS_H
