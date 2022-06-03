@@ -7,6 +7,7 @@
 #include "Geometry.h"
 
 class RandomGen {
+ public:
   RandomGen(WindowGeom wg) : xrand{0, wg.WIDTH}, yrand{0, wg.HEIGHT} {}
 
  private:
