@@ -53,7 +53,7 @@ class Ball : public SDL_Rect {
 
   void initialiseSteps();
   Bounds hitDetector(Paddle* player, Paddle* opponent);
-  void hitHandler(Bounds hitarea, Paddle* player, Paddle* opponent);
+  void bounce(Bounds hitarea, Paddle* player, Paddle* opponent);
   void resetBall();
 
   RandomGen randomGen;

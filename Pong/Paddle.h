@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 
+#include "Bounds.h"
 #include "FontManager.h"
 #include "Geometry.h"
 #include "Vec2.h"
@@ -38,6 +39,7 @@ class Paddle {
   int bottom();
   int length();
   int width();
+  virtual Bounds bounds() = 0;
 
   // game functions
   bool hit(int xball, int yball);
@@ -68,6 +70,7 @@ class Player : public Paddle {
 
   virtual int maxX();
   virtual int maxY();
+  virtual Bounds bounds() { return Bounds::PLAYER; }
 };
 class Opponent : public Paddle {
  public:
@@ -77,6 +80,7 @@ class Opponent : public Paddle {
   {}
   virtual int maxX();
   virtual int maxY();
+  virtual Bounds bounds() { return Bounds::OPPONENT; }
 };
 
 #endif

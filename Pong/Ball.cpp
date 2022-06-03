@@ -17,7 +17,7 @@ void Ball::move(int tick, Paddle* player, Paddle* opponent) {
     y += ystep;
     delay = 0;
 
-    hitHandler(hitDetector(player, opponent), player, opponent);
+    bounce(hitDetector(player, opponent), player, opponent);
     lastmovetick = tick;
   }
 }
@@ -48,7 +48,7 @@ Bounds Ball::hitDetector(Paddle* player, Paddle* opponent) {
   }
   return x > 0 ? Bounds::TOPRIGHT : Bounds::TOPLEFT;
 }
-void Ball::hitHandler(Bounds hitarea, Paddle* player, Paddle* opponent) {
+void Ball::bounce(Bounds hitarea, Paddle* player, Paddle* opponent) {
   switch (hitarea) {
     case Bounds::TOP:
       ystep *= -1;
