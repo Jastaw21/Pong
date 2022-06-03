@@ -11,7 +11,6 @@
 
 #include "FontManager.h"
 #include "GameObjects.h"
-#include "RandomGen.h"
 #include "Settings.h"
 
 class Window {
@@ -22,8 +21,7 @@ class Window {
         width_m(wg.WIDTH),
         player(playerP),
         opponent(opponentP),
-        ball(ballP),
-        random{wg} {}
+        ball(ballP) {}
 
   ~Window() {
     close();
@@ -73,7 +71,6 @@ class Window {
 
   // helper classes
   FontManager fontmgr_m;
-  RandomGen random;
 
   // loop flag
   bool run_M{true};
