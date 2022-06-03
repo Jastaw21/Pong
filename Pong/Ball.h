@@ -10,6 +10,7 @@
 #include "Clamp.h"
 #include "Geometry.h"
 #include "Paddle.h"
+#include "RandomGen.h"
 #include "Settings.h"
 #include "Vec2.h"
 
@@ -21,10 +22,11 @@ class Ball : public SDL_Rect {
         maxX_m(wg.WIDTH - size),
         size_m{size},
         target_M{0, 120},
-        centre{wg.WIDTH / 2 - (size / 2), wg.HEIGHT / 2} {}
+        centre{wg.WIDTH / 2 - (size / 2), wg.HEIGHT / 2},
+        randomGen{wg} {}
 
   // get
-  Vec2 pos() { return Vec2(x, y); }
+  Vec2<int> pos() { return Vec2(x, y); }
   pix xPos() { return x; }
   pix yPos() { return y; }
   pix maxX() { return maxX_m; }
@@ -40,8 +42,8 @@ class Ball : public SDL_Rect {
   int size_m{};
   int maxY_m{};
   int maxX_m{};
-  Vec2 centre{0, 0};
-  Vec2 target_M;
+  Vec2<int> centre{0, 0};
+  Vec2<int> target_M;
 
   unsigned long long lastmovetick{0};
   bool stepsinit{false};
@@ -53,6 +55,8 @@ class Ball : public SDL_Rect {
   Bounds hitDetector(Paddle* player, Paddle* opponent);
   void hitHandler(Bounds hitarea, Paddle* player, Paddle* opponent);
   void resetBall();
+
+  RandomGen randomGen;
 };
 
 #endif

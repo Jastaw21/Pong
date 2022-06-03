@@ -100,6 +100,7 @@ void Ball::resetBall() {
   stepsinit = false;
 }
 void Ball::initialiseSteps() {
+  target_M.x(static_cast<int>(randomGen.xGen()));
   int deltax = target_M.x() - x;
   int deltay = target_M.y() - y;
   double xscale = fabs(deltax) / (fabs(deltax) + fabs(deltay));
