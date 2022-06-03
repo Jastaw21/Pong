@@ -41,11 +41,14 @@ class Ball : public SDL_Rect {
   int maxY_m{};
   int maxX_m{};
   Vec2 centre{0, 0};
+  Vec2 target_M;
+
   unsigned long long lastmovetick{0};
   bool stepsinit{false};
   int xstep{0};
   int ystep{0};
-  Vec2 target_M;
+  ms delay{0};
+
   void initialiseSteps();
   Bounds hitDetector(Paddle* player, Paddle* opponent);
   void hitHandler(Bounds hitarea, Paddle* player, Paddle* opponent);

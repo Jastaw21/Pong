@@ -11,10 +11,11 @@ void Ball::move(int tick, Paddle* player, Paddle* opponent) {
     initialiseSteps();
   }
   if (tick - lastmovetick >
-      Settings::MoveInterval)  // if enough ticks have passed
+      (Settings::MoveInterval + delay))  // if enough ticks have passed
   {
     x += xstep;
     y += ystep;
+    delay = 0;
 
     hitHandler(hitDetector(player, opponent), player, opponent);
     lastmovetick = tick;
@@ -95,6 +96,7 @@ int Ball::paddleHit(Paddle* player, Paddle* opponent) { return 0; }
 void Ball::resetBall() {
   x = centre.x();
   y = centre.y();
+  delay = 1000;
 }
 void Ball::initialiseSteps() {
   int deltax = target_M.x() - x;
