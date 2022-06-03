@@ -2,10 +2,10 @@
 #define PADDLE_H
 #include <SDL.h>
 
-#include <vector>
-#include <string>
 #include <cstring>
 #include <sstream>
+#include <string>
+#include <vector>
 
 #include "FontManager.h"
 #include "Geometry.h"
@@ -50,7 +50,7 @@ class Paddle {
  protected:
   int length_m;  // size
   int width_m;
-  Vec2  pos;              // position
+  Vec2 pos;            // position
   const int r_m{255};  // colour
   const int g_m{255};
   const int b_m{255};
@@ -64,7 +64,7 @@ class Paddle {
 // basically just aliases at this point
 class Player : public Paddle {
  public:
-  Player(WindowGeom wg) : Paddle{wg, 10, 25, 15, 100} {}
+  Player(WindowGeom wg) : Paddle{wg, 10, 50, 15, 100} {}
 
   virtual int maxX();
   virtual int maxY();
@@ -77,8 +77,6 @@ class Opponent : public Paddle {
   {}
   virtual int maxX();
   virtual int maxY();
-
-  SDL_Rect draw_rect{};
 };
 
 #endif

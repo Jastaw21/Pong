@@ -56,7 +56,7 @@ void Window::close() {
 }
 void Window::draw() {
   // clear screen with black
-  SDL_SetRenderDrawColor(renderer_m, 55, 55, 55, 0);
+  SDL_SetRenderDrawColor(renderer_m, 0, 0, 0, 0);
   SDL_RenderClear(renderer_m);
 
   player->paddleDraw(renderer_m, &fontmgr_m);
