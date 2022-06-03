@@ -28,7 +28,7 @@ Bounds Ball::hitDetector(Paddle* player, Paddle* opponent) {
     return Bounds::PLAYER;
   }
   // chck opponent hit
-  if (x <= (opponent->x() + opponent->width()) && y >= opponent->y() &&
+  if (x >= (opponent->x() - w) && y >= opponent->y() &&
       y <= (opponent->y() + opponent->length())) {
     return Bounds::OPPONENT;
   }
@@ -90,6 +90,10 @@ void Ball::hitHandler(Bounds hitarea, Paddle* player, Paddle* opponent) {
       xstep *= -1;
       ystep *= -1;
       break;
+    case Bounds::OPPONENT:
+      xstep *= -1;
+      ystep *= -1;
+      break;
   }
 }
 
@@ -100,8 +104,8 @@ void Ball::resetBall() {
   stepsinit = false;
 }
 void Ball::initialiseSteps() {
-  target_M.x(static_cast<int>(randomGen.xGen()));
-  target_M.y(static_cast<int>(randomGen.yGen()));
+  target_M.x(400);
+  target_M.y(240);
   int deltax = target_M.x() - x;
   int deltay = target_M.y() - y;
   double xscale = fabs(deltax) / (fabs(deltax) + fabs(deltay));
