@@ -2,7 +2,7 @@
 
 void Ball::move(int tick, Paddle* player, Paddle* opponent) {
   // give one second delay
-  if (tick < 1000) {
+  if (tick < Settings::InitalDelay) {
     return;
   }
 
