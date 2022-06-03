@@ -22,12 +22,12 @@ void Ball::move(int tick, Paddle* player, Paddle* opponent) {
   }
 }
 Bounds Ball::hitDetector(Paddle* player, Paddle* opponent) {
-  paddleHit(player, opponent);
   // check player hit
   if (x <= (player->x() + player->width()) && y >= player->y() &&
       y <= (player->y() + player->length())) {
     return Bounds::PLAYER;
   }
+  // chck opponent hit
   if (x <= (opponent->x() + opponent->width()) && y >= opponent->y() &&
       y <= (opponent->y() + opponent->length())) {
     return Bounds::OPPONENT;
@@ -92,11 +92,12 @@ void Ball::hitHandler(Bounds hitarea, Paddle* player, Paddle* opponent) {
       break;
   }
 }
-int Ball::paddleHit(Paddle* player, Paddle* opponent) { return 0; }
+
 void Ball::resetBall() {
   x = centre.x();
   y = centre.y();
   delay = 1000;
+  stepsinit = false;
 }
 void Ball::initialiseSteps() {
   int deltax = target_M.x() - x;
