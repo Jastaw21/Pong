@@ -10,11 +10,8 @@ WindowGeom wg;
 Player player{wg};
 Opponent opponent{wg};
 Ball ball{wg, 8};
-
+GameObjects objects{wg};
 Window window{wg, &player, &opponent, &ball};
-
-// instance of gameobjects structure
-GameObjects gameObjects{wg};
 
 // bit of a stub for now, but useful to extract this into a function for future
 inline int init() {

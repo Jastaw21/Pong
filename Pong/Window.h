@@ -72,7 +72,7 @@ class Window {
 
   // helper classes
   FontManager fontmgr_m;
-  EventManager eventmgr_m;
+  EventManager eventmgr_m{};
 
   // loop flag
   bool run_M{true};
