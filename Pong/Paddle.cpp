@@ -23,7 +23,6 @@ void Paddle::down(int inc) {
   }
 }
 
-
 // position getters
 int Paddle::x() { return rectangle_m.x; }
 int Paddle::y() { return rectangle_m.y; }
@@ -35,6 +34,15 @@ int Paddle::bottom() { return rectangle_m.y + length_m; }
 // size getters
 int Paddle::length() { return length_m; }
 int Paddle::width() { return width_m; }
+
+void Paddle::deflect(int& ystep, int ypos) {
+  int relativeHeight = ypos - rectangle_m.y;
+  double scale =
+      static_cast<double>(relativeHeight) / static_cast<double>(rectangle_m.h);
+  double manip = (scale - 0.5) * 2;
+  auto locstep = ystep;
+  ystep = static_cast<int>(3.5 * manip);
+}
 
 bool Paddle::hit(int xball, int yball) {
   return ((xball == pos.x()) && (yball <= (pos.y() + length_m)) &&
@@ -51,9 +59,8 @@ void Paddle::score() { score_m += 1; }
 
 void Paddle::paddleDraw(SDL_Renderer* renderer_P, FontManager* fontmanager) {
   SDL_SetRenderDrawColor(renderer_P, r_m, g_m, b_m, 255);
-  SDL_RenderFillRect(renderer_P, &rectangle_m);  
+  SDL_RenderFillRect(renderer_P, &rectangle_m);
   std::string s = std::to_string(score_m);
   const char* sd = s.c_str();
   fontmanager->draw(renderer_P, draw_rect, sd);
-
 }

@@ -3,6 +3,7 @@
 #include <SDL.h>
 
 #include <cstring>
+#include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -15,7 +16,7 @@
 class Paddle {
  public:
   Paddle(WindowGeom wg, int xpos, int textXpos, int textYpos, int textSize,
-         int width = 5, int length = 50)
+         int width = 2, int length = 100)
       : pos(xpos, wg.HEIGHT - (length / 2)),
         length_m(length),
         width_m(width),
@@ -40,6 +41,7 @@ class Paddle {
   int length();
   int width();
   virtual Bounds bounds() = 0;
+  void deflect(int& ystep, int ypos);
 
   // game functions
   bool hit(int xball, int yball);

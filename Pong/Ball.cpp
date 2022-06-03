@@ -54,7 +54,6 @@ void Ball::bounce(Bounds hitarea, Paddle* player, Paddle* opponent) {
       ystep *= -1;
       break;
     case Bounds::LEFT:
-      xstep *= -1;
       opponent->score();
       stepsinit = false;
       resetBall();
@@ -63,7 +62,6 @@ void Ball::bounce(Bounds hitarea, Paddle* player, Paddle* opponent) {
       ystep *= -1;
       break;
     case Bounds::RIGHT:
-      xstep *= -1;
       player->score();
       stepsinit = false;
       resetBall();
@@ -88,11 +86,11 @@ void Ball::bounce(Bounds hitarea, Paddle* player, Paddle* opponent) {
       break;
     case Bounds::PLAYER:
       xstep *= -1;
-      ystep *= -1;
+      player->deflect(ystep, y);
       break;
     case Bounds::OPPONENT:
       xstep *= -1;
-      ystep *= -1;
+      opponent->deflect(ystep, y);
       break;
   }
 }
@@ -104,8 +102,8 @@ void Ball::resetBall() {
   stepsinit = false;
 }
 void Ball::initialiseSteps() {
-  target_M.x(400);
-  target_M.y(240);
+  target_M.x(static_cast<int>(randomGen.xGen()));
+  target_M.y(static_cast<int>(randomGen.yGen()));
   int deltax = target_M.x() - x;
   int deltay = target_M.y() - y;
   double xscale = fabs(deltax) / (fabs(deltax) + fabs(deltay));
