@@ -7,9 +7,6 @@
 #include "Window.h"
 
 WindowGeom wg;
-Player player{wg};
-Opponent opponent{wg};
-Ball ball{wg, 8};
 GameObjects objects{wg};
 Window window{wg, &objects};
 
