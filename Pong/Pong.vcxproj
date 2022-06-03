@@ -32,6 +32,7 @@
     <ClCompile Include="GameObjects.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Paddle.cpp" />
+    <ClCompile Include="RandomGen.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -40,6 +41,7 @@
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="Paddle.h" />
+    <ClInclude Include="RandomGen.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="Window.h" />
