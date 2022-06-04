@@ -10,7 +10,7 @@ class FontManager {
   FontManager() {}
   ~FontManager() { close(); }
 
-  bool init();
+  void init(bool& success);
   bool loadfont();
   void close();
   void draw(SDL_Renderer* rendererP, SDL_Rect& drawrect, const char* score);

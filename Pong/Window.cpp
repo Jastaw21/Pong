@@ -2,47 +2,13 @@
 
 // state managers
 bool Window::load() {
-  // success flag
   bool success = true;
-
-  // convert title member variable to const char*
   auto title_l = title_m.c_str();
-
-  // initialise video
-  if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-    printf("SDL Video not initialised! SDL_Error: %s\n", SDL_GetError());
-    success = false;
-    return success;
-  }
-  // set quality
-  if (!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1")) {
-    printf("Linear textuure not working\n");
-  }
-  // create window
-  window_m = SDL_CreateWindow(title_l, SDL_WINDOWPOS_UNDEFINED,
-                              SDL_WINDOWPOS_UNDEFINED, width_m, height_m,
-                              SDL_WINDOW_SHOWN);
-
-  // see if the window failed - exit early if so
-  if (window_m == NULL) {
-    printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
-    success = false;
-    return success;
-  }
-
-  // create the renderer
-  renderer_m = SDL_CreateRenderer(window_m, -1, SDL_RENDERER_ACCELERATED);
-  // check failure
-  if (renderer_m == NULL) {
-    printf("Renderer didn't start! Error: %s", SDL_GetError());
-    success = false;
-    return success;
-  }
-  // init SDL_ttf lib
-  if (!fontmgr_m.init()) {
-    success = false;
-    return success;
-  }
+  videoinit(success);
+  qualityinit(success);
+  windowinit(success, title_l);
+  rendererinit(success);
+  fontmgr_m.init(success);
   return success;
 }
 void Window::close() {
@@ -80,7 +46,7 @@ void Window::loop() {
     eventmgr_m.loop(run_M);
     // game objects loop
     objects->ball.move(ticks_m, &objects->player, &objects->opponent);
-    objects->opponent.aiMove(objects->ball.xstep, objects->ball.ystep);
+    objects->opponent.opponentMove(objects->ball.xstep, objects->ball.ystep);
 
     // render loop
     draw();
@@ -90,4 +56,35 @@ void Window::loop() {
     SDL_Delay(static_cast<Uint32>(floor(16.666f - elapsed)));
   }
   close();
+}
+
+// init functions
+void Window::videoinit(bool& success) {
+  if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+    printf("SDL Video not initialised! SDL_Error: %s\n", SDL_GetError());
+    success = false;
+  }
+}
+void Window::qualityinit(bool& success) {
+  if (!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1")) {
+    printf("Linear textuure not working\n");
+    success = false;
+  }
+}
+void Window::windowinit(bool& success, const char* title) {
+  window_m =
+      SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+                       width_m, height_m, SDL_WINDOW_SHOWN);
+  if (window_m == NULL) {
+    printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
+    success = false;
+  }
+}
+void Window::rendererinit(bool& success) {  // create the renderer
+  renderer_m = SDL_CreateRenderer(window_m, -1, SDL_RENDERER_ACCELERATED);
+  // check failure
+  if (renderer_m == NULL) {
+    printf("Renderer didn't start! Error: %s", SDL_GetError());
+    success = false;
+  }
 }

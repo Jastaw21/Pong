@@ -1,12 +1,12 @@
 #include "FontManager.h"
 
-bool FontManager::init() {
+void FontManager::init(bool& success) {
   if (TTF_Init() == -1) {
     printf("Error Initialising Font System. Error code %s\n", TTF_GetError());
-    return false;
+    success = false;
   } else {
     if (!loadfont()) {
-      return false;
+      success = false;
     }
   }
 }

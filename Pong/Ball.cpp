@@ -93,7 +93,6 @@ void Ball::bounce(Bounds hitarea, Paddle* player, Paddle* opponent) {
       break;
   }
 }
-
 void Ball::resetBall() {
   x = centre.x();
   y = centre.y();
@@ -115,7 +114,7 @@ void Ball::initialiseSteps() {
   ystep = static_cast<int>(round(ymov));
   stepsinit = true;
 }
-void Ball::ballDraw(SDL_Renderer* rendererP) {
+void Ball::draw(SDL_Renderer* rendererP) {
   SDL_SetRenderDrawColor(rendererP, r_m, g_m, b_m, 255);
   SDL_RenderFillRect(rendererP, this);
 }

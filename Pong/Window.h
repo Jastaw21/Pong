@@ -1,5 +1,3 @@
-// Main Window Implementation
-
 #ifndef WINDOW_H
 #define WINDOW_H
 
@@ -48,8 +46,13 @@ class Window {
 
   // loop flag
   bool run_M{true};
-
   void draw();
   void tick() { ticks_m = SDL_GetTicks(); };
+
+  // init functions
+  void videoinit(bool& success);
+  void qualityinit(bool& success);
+  void windowinit(bool& success, const char* title);
+  void rendererinit(bool& success);
 };
 #endif

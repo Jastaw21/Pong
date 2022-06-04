@@ -27,14 +27,12 @@ class Ball : public SDL_Rect {
 
   // get
   Vec2<int> pos() { return Vec2(x, y); }
-  pix xPos() { return x; }
-  pix yPos() { return y; }
-  pix maxX() { return maxX_m; }
-  pix maxY() { return maxY_m; }
+
   Vec2<int> target() { return target_M; }
+
   // update
   void move(int tick, Paddle* player, Paddle* opponent);
-  void ballDraw(SDL_Renderer* rendererP);
+  void draw(SDL_Renderer* rendererP);
   int xstep{0};
   int ystep{0};
 

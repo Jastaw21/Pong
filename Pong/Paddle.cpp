@@ -2,39 +2,21 @@
 
 void Paddle::up(int inc) {
   auto newY = rectangle_m.y - inc;
-
-  if (newY > 0)  // case where no concerns - y is above zero
-  {
-    rectangle_m.y = newY;
-    return;
-  } else  // case would take us past zero
-  {
-    rectangle_m.y = 0;  // set to bounds
-    return;
-  }
+  rectangle_m.y = newY > 0 ? newY : 0;
 }
 void Paddle::down(int inc) {
   auto newY = rectangle_m.y + inc;
-  if (newY <= maxY()) {
-    rectangle_m.y = newY;
-  } else {
-    rectangle_m.y = yMax - length_m;
-    return;
-  }
+  rectangle_m.y = (newY + length_m) <= yMax ? newY : (yMax - length_m);
 }
 
 // position getters
 int Paddle::x() { return rectangle_m.x; }
 int Paddle::y() { return rectangle_m.y; }
 int Paddle::maxX() { return xMax; }
-int Paddle::maxY() { return yMax; }
-int Paddle::top() { return rectangle_m.y; }
-int Paddle::bottom() { return rectangle_m.y + length_m; }
 
 // size getters
 int Paddle::length() { return length_m; }
 int Paddle::width() { return width_m; }
-
 void Paddle::deflect(int& ystep, int ypos) {
   int relativeHeight = ypos - rectangle_m.y;
   double scale =
@@ -44,18 +26,12 @@ void Paddle::deflect(int& ystep, int ypos) {
   ystep = static_cast<int>(3.5 * manip);
 }
 
-bool Paddle::hit(int xball, int yball) {
-  return ((xball == pos.x()) && (yball <= (pos.y() + length_m)) &&
-          (pos.y() >= pos.y()));
-}
-
 // bounds getters
-int Player::maxX() { return xMax; }
+
 int Player::maxY() { return (yMax - length_m); }
-int Opponent::maxX() { return xMax - width_m; }
 int Opponent::maxY() { return (yMax - length_m); }
 
-void Opponent::aiMove(int xstep, int ystep) {
+void Opponent::opponentMove(int xstep, int ystep) {
   if (xstep > 0) {
     up(Settings::PaddleMoveStep);
   } else {

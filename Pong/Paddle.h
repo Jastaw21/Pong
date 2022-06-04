@@ -3,8 +3,6 @@
 #include <SDL.h>
 
 #include <cstring>
-#include <iostream>
-#include <sstream>
 #include <string>
 #include <vector>
 
@@ -35,17 +33,14 @@ class Paddle {
   // getters
   int x();
   int y();
-  virtual int maxX();
-  virtual int maxY();
-  int top();
-  int bottom();
+  int maxX();
+  virtual int maxY() = 0;
   int length();
   int width();
   virtual Bounds bounds() = 0;
   void deflect(int& ystep, int ypos);
 
   // game functions
-  bool hit(int xball, int yball);
   void score();
   void paddleDraw(SDL_Renderer* renderer_P, FontManager* fontmanager);
 
@@ -53,16 +48,18 @@ class Paddle {
   SDL_Rect draw_rect;
 
  protected:
-  int length_m;  // size
+  // size
+  int length_m;
   int width_m;
-  Vec2<int> pos;       // position
-  const int r_m{255};  // colour
+  // location
+  Vec2<int> pos;
+  // colour
+  const int r_m{255};
   const int g_m{255};
   const int b_m{255};
+  // bounds
   int xMax;
   int yMax;
-
- protected:
   int score_m{0};
 };
 
@@ -70,7 +67,6 @@ class Player : public Paddle {
  public:
   Player(WindowGeom wg) : Paddle{wg, 10, 50, 15, 100} {}
 
-  virtual int maxX();
   virtual int maxY();
   virtual Bounds bounds() { return Bounds::PLAYER; }
 };
@@ -81,10 +77,10 @@ class Opponent : public Paddle {
       : Paddle{wg, wg.WIDTH - (10 + 5), wg.WIDTH - 150, 15, 100}
 
   {}
-  virtual int maxX();
+
   virtual int maxY();
   virtual Bounds bounds() { return Bounds::OPPONENT; }
-  void aiMove(int xstep, int ystep);
+  void opponentMove(int xstep, int ystep);
   int desiredYpos{};
 };
 
