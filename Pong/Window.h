@@ -4,7 +4,6 @@
 #include <SDL.h>
 #include <stdio.h>
 
-#include <iostream>
 #include <string>
 
 #include "EventManager.h"
@@ -38,7 +37,8 @@ class Window {
   SDL_Renderer* renderer_m = NULL;
   SDL_Surface* surf_m = NULL;
 
-  std::string title_m = "Pong";  // window title
+  // window title
+  std::string title_m = "Pong";
 
   // helper classes
   FontManager fontmgr_m;
@@ -46,10 +46,9 @@ class Window {
 
   // loop flag
   bool run_M{true};
+
   void draw();
   void tick() { ticks_m = SDL_GetTicks(); };
-
-  // init functions
   void videoinit(bool& success);
   void qualityinit(bool& success);
   void windowinit(bool& success, const char* title);

@@ -80,8 +80,7 @@ class Opponent : public Paddle {
 
   virtual int maxY();
   virtual Bounds bounds() { return Bounds::OPPONENT; }
-  void opponentMove(int xstep, int ystep);
-  int desiredYpos{};
+  void opponentMove(int ypos, int xstep);
 };
 
 #endif

@@ -31,11 +31,13 @@ void Paddle::deflect(int& ystep, int ypos) {
 int Player::maxY() { return (yMax - length_m); }
 int Opponent::maxY() { return (yMax - length_m); }
 
-void Opponent::opponentMove(int xstep, int ystep) {
-  if (xstep > 0) {
-    up(Settings::PaddleMoveStep);
+void Opponent::opponentMove(int ypos, int xstep) {
+  if (ypos < rectangle_m.y) {
+    up(5);
   } else {
-    down(Settings::PaddleMoveStep);
+    if (ypos > rectangle_m.y + rectangle_m.h) {
+      down(5);
+    }
   }
 }
 
