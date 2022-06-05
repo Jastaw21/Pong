@@ -1,12 +1,11 @@
 #include "Ball.h"
 
 void Ball::move(int tick, Paddle* player, Paddle* opponent) {
-  // give one second delay
+  // Delay after start up
   if (tick < Settings::InitalDelay) {
     return;
   }
 
-  // see if we've set the movements by step in each direction
   if (!stepsinit) {
     initialiseSteps();
   }
@@ -15,8 +14,8 @@ void Ball::move(int tick, Paddle* player, Paddle* opponent) {
     x += xstep;
     y += ystep;
     delay = 0;
-
-    bounce(hitDetector(player, opponent), player, opponent);
+auto hitarea = hitdetector(player, opponent);
+    bounce(hitarea, player, opponent);
     lastmovetick = tick;
   }
 }
@@ -26,7 +25,7 @@ Bounds Ball::hitDetector(Paddle* player, Paddle* opponent) {
       y <= (player->y() + player->length())) {
     return Bounds::PLAYER;
   }
-  // chck opponent hit
+  // check opponent hit
   if (x >= (opponent->x() - w) && y >= opponent->y() &&
       y <= (opponent->y() + opponent->length())) {
     return Bounds::OPPONENT;
