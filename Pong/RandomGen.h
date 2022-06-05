@@ -17,6 +17,7 @@ class RandomGen {
 
   unsigned int xGen();
   unsigned int yGen();
+double scalerGen();
 
  private:
   std::mt19937 twister{static_cast<unsigned int>(
