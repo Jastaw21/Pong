@@ -23,6 +23,7 @@ class RandomGen {
       std::chrono::steady_clock::now().time_since_epoch().count())};
   std::uniform_int_distribution<> xrand{};
   std::uniform_int_distribution<> yrand{};
+std::uniform_int_distribution<> reacttime{1,20};
   int xMidpoint{};
 };
 
