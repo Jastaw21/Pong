@@ -46,7 +46,8 @@ void Window::loop() {
     eventmgr_m.loop(run_M);
     // game objects loop
     objects->ball.move(ticks_m, &objects->player, &objects->opponent);
-    objects->opponent.opponentMove(objects->ball.y, objects->ball.xstep);
+    objects->opponent.opponentMove(objects->ball.y, objects->ball.xstep,
+                                   randon_m.scalerGen());
 
     // render loop
     draw();

@@ -80,7 +80,13 @@ class Opponent : public Paddle {
 
   virtual int maxY();
   virtual Bounds bounds() { return Bounds::OPPONENT; }
-  void opponentMove(int ypos, int xstep);
+  void opponentMove(int ypos, int xstep, double reaction);
+
+ private:
+  Uint32 lastdirectionchangetick{};
+  bool samedirection{};
+  bool lastmoveUP{};
+  bool lastmoveDOWN{};
 };
 
 #endif

@@ -18,7 +18,8 @@ class Window {
         height_m(wg.HEIGHT),
         width_m(wg.WIDTH),
         objects(objectsP),
-        eventmgr_m(objectsP) {}
+        eventmgr_m(objectsP),
+        randon_m(wg) {}
 
   // state managers
   bool load();
@@ -43,6 +44,7 @@ class Window {
   // helper classes
   FontManager fontmgr_m;
   EventManager eventmgr_m;
+  RandomGen randon_m;
 
   // loop flag
   bool run_M{true};

@@ -8,5 +8,5 @@ unsigned int RandomGen::yGen() { return yrand(twister); }
 double RandomGen::scalerGen() {
   auto gen = reacttime(twister);
   double scale = gen / 10.0;
-  return clamp(scale, 0.9, 1.1);
+  return clamp(scale, 0.5, 1.15);
 }

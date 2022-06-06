@@ -67,20 +67,24 @@ void Ball::bounce(Bounds hitarea, Paddle* player, Paddle* opponent) {
     case Bounds::NONE:
       break;
     case Bounds::TOPLEFT:
-      xstep *= -1;
-      ystep *= -1;
+      opponent->score();
+      stepsinit = false;
+      resetBall();
       break;
     case Bounds::BOTTOMLEFT:
-      xstep *= -1;
-      ystep *= -1;
+      opponent->score();
+      stepsinit = false;
+      resetBall();
       break;
     case Bounds::TOPRIGHT:
-      xstep *= -1;
-      ystep *= -1;
+      player->score();
+      stepsinit = false;
+      resetBall();
       break;
     case Bounds::BOTTOMRIGHT:
-      xstep *= -1;
-      ystep *= -1;
+      player->score();
+      stepsinit = false;
+      resetBall();
       break;
     case Bounds::PLAYER:
       xstep *= -1;

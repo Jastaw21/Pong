@@ -31,12 +31,52 @@ void Paddle::deflect(int& ystep, int ypos) {
 int Player::maxY() { return (yMax - length_m); }
 int Opponent::maxY() { return (yMax - length_m); }
 
-void Opponent::opponentMove(int ypos, int xstep) {
+void Opponent::opponentMove(int ypos, int xstep, double reaction) {
   if (ypos < rectangle_m.y) {
-    up(5);
-  } else {
-    if (ypos > rectangle_m.y + rectangle_m.h) {
+    // if we're moving in the same direction - no need for reaction time
+    if (lastmoveUP) {
+      up(5);
+      lastdirectionchangetick = SDL_GetTicks();
+      lastmoveUP = true;
+      lastmoveDOWN = false;
+    }
+
+    // if we're changing directon - add some randomness
+    else if (SDL_GetTicks() > lastdirectionchangetick +
+                                  (Settings::OppenentThinkTime * reaction)) {
+      up(5);
+      lastdirectionchangetick = SDL_GetTicks();
+      lastmoveUP = true;
+      lastmoveDOWN = false;
+    } else {
+      lastdirectionchangetick = SDL_GetTicks();
+      lastmoveUP = true;
+      lastmoveDOWN = false;
+    }
+  }
+
+  else if (ypos > rectangle_m.y + length_m) {
+    if (lastmoveDOWN) {
       down(5);
+      lastdirectionchangetick = SDL_GetTicks();
+      lastmoveUP = false;
+      lastmoveDOWN = true;
+    }
+
+    else if (SDL_GetTicks() >
+             lastdirectionchangetick + (Settings::OppenentThinkTime * reaction))
+
+    {
+      down(5);
+      lastdirectionchangetick = SDL_GetTicks();
+      lastmoveUP = false;
+      lastmoveDOWN = true;
+    }
+
+    else {
+      lastdirectionchangetick = SDL_GetTicks();
+      lastmoveUP = false;
+      lastmoveDOWN = true;
     }
   }
 }
