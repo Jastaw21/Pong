@@ -65,7 +65,7 @@ class Paddle {
 
 class Player : public Paddle {
  public:
-  Player(WindowGeom wg) : Paddle{wg, 10, 50, 15, 100} {}
+  Player(WindowGeom wg) : Paddle{wg, 20, 50, 15, 100} {}
 
   virtual int maxY();
   virtual Bounds bounds() { return Bounds::PLAYER; }
@@ -74,7 +74,7 @@ class Player : public Paddle {
 class Opponent : public Paddle {
  public:
   Opponent(WindowGeom wg)
-      : Paddle{wg, wg.WIDTH - (10 + 5), wg.WIDTH - 150, 15, 100}
+      : Paddle{wg, wg.WIDTH - (20 + 5), wg.WIDTH - 150, 15, 100}
 
   {}
 

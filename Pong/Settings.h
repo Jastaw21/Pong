@@ -8,7 +8,7 @@ struct Settings {
   static const ms InitalDelay = 1000;
   static const pix MoveStep = 12;
   static const pix PaddleMoveStep = 25;
-  static const ms OppenentThinkTime = 200;
+  static const ms OppenentThinkTime = 300;
 };
 
 #endif  // !SETTINGS_H
